@@ -1,8 +1,8 @@
 Wilkommen auf der deutschen openHAB Dokumentation
+=================================================
 
-## Project layout
+Ziel der Dokumentation ist es, den Einstieg in openHAB so einfach wie möglich zu gestalten.
+Zudem soll die Dokumentation auch ein Nachschlagewerk für erfahrene Benutzer sein.  
 
-    mkdocs.yml    	# The configuration file.
-    docs/
-        index.md  	# The documentation homepage.
-        Beispiel.md     # Other markdown pages, images and other files.
+
+

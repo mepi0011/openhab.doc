@@ -18,8 +18,8 @@ Um die Schreibweise zu vereinheitlichen, wird in den folgenden Kapitel
 das Verzeichnis mit \<Pfad\_zu\_openHAB\> ersetzt. Zum Ausführen von
 openHAB, wechseln sie in das Verzeichnis \<Pfad\_zu\_openHAB\>. Abhängig
 vom verwendeten Betriebssystem führen sie eines der beiden Scripte aus.   
-Linux: start.sh\   
-Windows: start.bat\   
+Linux: start.sh   
+Windows: start.bat   
 
 ![Downloadseite von openHAB](images/openhab_Download.png "Downloadseite von openHAB")
 
