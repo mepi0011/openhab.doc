@@ -1,6 +1,0 @@
-site_name: openHAB Dokumentation
-pages:
-- [index.md, Home]
-- [Installation.md, Installation auf PC]
-- [Beispiel.md, Erstes Beispiel]
-- [license.md, Lizenzierung]
