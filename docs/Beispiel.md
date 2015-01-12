@@ -28,9 +28,9 @@ Konfigurationsdatei openhab.cfg angelegt werden. Beim ersten Start des
 openHAB Designer muss dieser ebenfalls einrichten werden.
 
 Als erstes wird mit Hilfe eines gewöhnlichen Texteditors die Item-Datei
-im Verzeichnis \<Pfad\_zu\_openHAB\>/configurations/items angelegt. In
+im Verzeichnis <Pfad_zu_openHAB>/configurations/items angelegt. In
 unserem Beispiel nennen wir diese Haus.items. In ihr werden zukünftig
-alle benötigen Items und Gruppen definiert.\
+alle benötigen Items und Gruppen definiert.
 
 * * * * *
 ![Hinweis!](images/Warning.png "Hinweis: Auf Dateierweiterung achten!")
@@ -40,8 +40,8 @@ es zu Fehlern bei openHab bzw. beim openHab-Designer kommen.
 
 * * * * *
 
-Im Verzeichnis \<Pfad\_zu\_openHAB\>/configurations muss eine kopie der
-Datei openhab\_default.cfg angelegt und in openhab.cfg umbenennen
+Im Verzeichnis <Pfad_zu_openHAB>/configurations muss eine kopie der
+Datei openhab_default.cfg angelegt und in openhab.cfg umbenennen
 werden. Ohne diese Datei gibt openHAB eine Fehlermeldung aus! Die
 Einstellungen dieser Datei sind aktuell noch nicht relevant. Details
 hierzu werden in Kapitel [sec:AnbindungKNX] erläutert. Der Designer kann
@@ -51,7 +51,7 @@ Pfad zum Verzeichnis „configurations“ von openHAB mitgeteilt werden
 (siehe Abbildung [Designer~C~onfig]). Hierzu das Ordner Symbol drücken
 und anschließend im angezeigten Dialog das Verzeichnis auswählen in dem
 sich die openhab.cfg Datei befindet und mit OK bestätigen. In unserem
-Fall ist dies \<Pfad\_zu\_openHAB\>/configrurations.
+Fall ist dies <Pfad_zu_openHAB>/configrurations.
 
 ![Konfiguration des openHAB Designer](images/openHAB_Designer_Configuration.png "Konfiguration des openHAB Designer")
 
@@ -75,21 +75,34 @@ In unserer Visualisierung sollen die Räume in das Erd- bzw. Obergeschoss
 gegliedert werden. Hierzu legen wir die Gruppe gEG und gOG an und tragen
 folgendes in die Item.datei ein:   
 
-Code muss noch eingefügt werde!    
+    // Gruppen
+    Group gEG 	// Gruppe Erdgeschoss
+    Group gOG 	// Gruppe Obergeschoss
 
 Die beiden Gruppen bestehen aus dem Schlüsselwort Group und ihrem Namen.
 Mehr wird hierfür aktuell nicht benötigt. Die Abbilding
 [Befehlsreferenz~I~tem] zeigt den prinzipiellen Aufbau eines Item.\
 
 Wie in Programmiersprachen auch, kennt openHAB Kommentare. Diese können
-durch // für eine Zeile bzw. für mehrere Zeilen durch /\* am Anfang und
-\*/ am Ende eingeleitet werden. Die Kommentare werden in den
+durch // für eine Zeile bzw. für mehrere Zeilen durch \* am Anfang und
+*/ am Ende eingeleitet werden. Die Kommentare werden in den
 Code-Baispielen dieses Buch grün dargestellt.
 
-Nun müssen noch die Räume definieren werden. Zuvor wird für jeden Raum
-eine Gruppe definieren, in dem die eigentlichen Items (Schalter,
-Sensoren und Aktoren) zugeordnet werden.
+Nun müssen noch die Räume definieren werden. Zuvor wird für jeden Raum eine Gruppe definieren, in dem die eigentlichen Items (Schalter, Sensoren und Aktoren) zugeordnet werden.   
 Die Item-Datei erweitern wir mit folgendem Code:
+
+    Group OG_Schlafzimmer	"Schlafzimmer"	<bedroom>	(gOG)
+    Group OG_Kinderzimmer1	"Kinderzimmer1"	<boy1>		(gOG)
+    Group OG_Kinderzimmer2	"Kinderzimmer2"	<child2>	(gOG)
+    Group OG_Bad		"Bad"		<bath>		(gOG)
+    Group OG_Flur		"Flur OG"			(gOG)
+
+    Group EG_Kueche		"Kueche" 	<kitchen>	(gEG)
+    Group EG_Esszimmer		"Esszimmer" 	<child1> 	(gEG)
+    Group EG_WC			"WC"		<bath>		(gEG)
+    Group EG_Wohnzimmer		"Wohnzimmer"	<sofa>		(gEG)
+    Group EG_Abstellraum	"Abstellraum"	<wardrobe2>	(gEG)
+    Group EG_Flur		"Flur EG"			(gEG)
 
 Mit Hilfe des Codes und der Abbildung [Befehlsreferenz~I~tem] sollte der
 Aufbau verständlich werden.
@@ -98,6 +111,22 @@ Items bestehen immer aus den Komponenten Funktion, Name, Text und Icon.
 Zum Schluss werden noch die eingentlichen Funktionen der einzelnen
 Räumen über Items definiert. Zu Beginn beschränken wir uns auf Schalter
 und Dimmer und fügen folgendes in die Items-Datei ein:
+
+    /*Licht*/
+    Switch Licht_OG_Kinderzimmer1	"Licht Kinderzimmer1"	(OG_Kinderzimmer1)
+    Switch Licht_OG_Kinderzimmer2	"Licht Kinderzimmer2"	(OG_Kinderzimmer2)
+    Switch Licht_OG_Bad_Spiegel		"Licht Spiegelschrank"	(OG_Bad)
+    Switch Licht_OG_Flur		"Licht Flur/Treppe OG"	(OG_Flur)
+    Switch Licht_EG_Kueche		"Licht Kueche"		(EG_Kueche)
+    Switch Licht_EG_Esszimmer		"Licht Esszimmer"	(EG_Esszimmer)
+    Switch Licht_EG_WC			"Licht WC"		(EG_WC)
+    Switch Licht_EG_Abstellraum		"Licht Abstellraum"	(EG_Abstellraum)
+    Switch Licht_EG_Flur		"Licht Flur/Treppe EG"	(EG_Flur)
+
+    /*Dimmer*/
+    Dimmer Licht_OG_Schlafzimmer	"Licht Schlafzimmer"	(OG_Schlafzimmer)
+    Dimmer Licht_OG_Bad			"Licht Bad"		(OG_Bad)
+    Dimmer Licht_EG_Wohnzimmer		"Licht Wohnzimmer"	(EG_Wohnzimmer)
 
 Auch hier ist der Aufbau der Items gleich, sie bestehen bestehen aus den
 Komponenten Funktion, Name, Text und Gruppe. In diesem Beispiel wurden
@@ -108,18 +137,63 @@ werden.
 
 Die komplette Item-Datei sollte nun wie folgt aussehen:
 
+    // Gruppen
+    Group gEG 	// Gruppe Erdgeschoss
+    Group gOG 	// Gruppe Obergeschoss
+
+    Group OG_Schlafzimmer	"Schlafzimmer"	<bedroom>	(gOG)
+    Group OG_Kinderzimmer1	"Kinderzimmer1"	<boy1>		(gOG)
+    Group OG_Kinderzimmer2	"Kinderzimmer2"	<child2>	(gOG)
+    Group OG_Bad		"Bad"		<bath>		(gOG)
+    Group OG_Flur		"Flur OG"			(gOG)
+
+    Group EG_Kueche		"Kueche" 	<kitchen>	(gEG)
+    Group EG_Esszimmer		"Esszimmer" 	<child1> 	(gEG)
+    Group EG_WC			"WC"		<bath>		(gEG)
+    Group EG_Wohnzimmer		"Wohnzimmer"	<sofa>		(gEG)
+    Group EG_Abstellraum	"Abstellraum"	<wardrobe2>	(gEG)
+    Group EG_Flur		"Flur EG"			(gEG)
+
+    /*Licht*/
+    Switch Licht_OG_Kinderzimmer1	"Licht Kinderzimmer1"	(OG_Kinderzimmer1)
+    Switch Licht_OG_Kinderzimmer2	"Licht Kinderzimmer2"	(OG_Kinderzimmer2)
+    Switch Licht_OG_Bad_Spiegel		"Licht Spiegelschrank"	(OG_Bad)
+    Switch Licht_OG_Flur		"Licht Flur/Treppe OG"	(OG_Flur)
+    Switch Licht_EG_Kueche		"Licht Kueche"		(EG_Kueche)
+    Switch Licht_EG_Esszimmer		"Licht Esszimmer"	(EG_Esszimmer)
+    Switch Licht_EG_WC			"Licht WC"		(EG_WC)
+    Switch Licht_EG_Abstellraum		"Licht Abstellraum"	(EG_Abstellraum)
+    Switch Licht_EG_Flur		"Licht Flur/Treppe EG"	(EG_Flur)
+
+    /*Dimmer*/
+    Dimmer Licht_OG_Schlafzimmer	"Licht Schlafzimmer"	(OG_Schlafzimmer)
+    Dimmer Licht_OG_Bad			"Licht Bad"		(OG_Bad)
+    Dimmer Licht_EG_Wohnzimmer		"Licht Wohnzimmer"	(EG_Wohnzimmer)
+
 Damit das Beispiel noch lauffähig wird, benötigt openHAB noch die
 Sitemap-Datei. In ihr wird der Aufbau des Weboberfläche definiert. Im
 Ordner sitemaps wird eine Datei Haus.Sitemaps angelegt und folgendes
 eingetragen.
 
+    sitemap Haus label="Hauptmenue"
+    {
+     Frame {
+            Group item=gOG	label="Obergeschoss"	icon="firstfloor"
+            Group item=gUG	label="Erdgeschoss"	icon="groundfloor"
+           }
+    }
+
 Nachdem nun die drei wichtigsten Dateien angelegt wurden, kann das
 Beispiel gestartet werden. Hierzu öffnen wir die Konsole (Linux) bzw.
-die Dos-Box (Windows) und wechseln mit dem Befehl cd
-\<Pfad\_zu\_openHAB\>/runtime (Linux) oder dir
-\<Pfad\_zu\_openHAB\>\\runtime (Windows) in das Verzeichnis von openHAB.
-Anschließend wird openHAB mit dem Befehl ./start.sh (Linux) bzw.
-start.bat gestartet.\
+die Dos-Box (Windows) und wechseln mit dem Befehl   
+    cd <Pfad_zu_openHAB>/runtime (Linux)
+oder
+    dir <Pfad_zu_openHAB>\runtime (Windows)
+in das Verzeichnis von openHAB.
+Anschließend wird openHAB mit einem der folgenden Befehl gestartet.
+    ./start.sh (Linux)
+oder
+    start.bat (Windows)
 
 Nach erfolgreichem Start öffnen wir einen Browser und geben folgendes
 ein:   

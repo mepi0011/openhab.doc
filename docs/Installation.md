@@ -12,11 +12,11 @@ heruntergeladen und in einem beliebigen Ordner entpacken werden.
 
 z.B.:   
 Linux:  /openhab/runtime   
-Windows: E:\\openhab\\runtime\\   
+Windows: E:\openhab\runtime\   
 
 Um die Schreibweise zu vereinheitlichen, wird in den folgenden Kapitel
-das Verzeichnis mit \<Pfad\_zu\_openHAB\> ersetzt. Zum Ausführen von
-openHAB, wechseln sie in das Verzeichnis \<Pfad\_zu\_openHAB\>. Abhängig
+das Verzeichnis mit <Pfad_zu_openHAB> ersetzt. Zum Ausführen von
+openHAB, wechseln sie in das Verzeichnis <Pfad_zu_openHAB>. Abhängig
 vom verwendeten Betriebssystem führen sie eines der beiden Scripte aus.   
 Linux: start.sh   
 Windows: start.bat   
@@ -53,5 +53,5 @@ verwenden, da dieser Syntaxfehler erkennt und eine Autovervollständigung
 implementiert hat. Der openHAB Designer kann auch von openHAB.org
 heruntergeladen werden, dabei ist auf die Betriebssystem Version zu
 achten. Nach dem Download den Designer in einem beliebigen Ordner
-entpacken (z.B.: Linux:  /openHAB/designer).
+entpacken (z.B.: Linux: /openHAB/designer).
 
