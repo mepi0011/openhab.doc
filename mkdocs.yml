@@ -3,4 +3,5 @@ pages:
 - [index.md, Home]
 - [Installation.md, Installation auf PC]
 - [Beispiel.md, Erste Schritte]
+- [KNX.md, KNX Anbindung] 
 - [license.md, Lizenzierung]
