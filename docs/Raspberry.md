@@ -33,7 +33,7 @@ von raspberry.org heruntergeladen werden kann.
     Hierzu kann das Programm Win32DiskImager verwendet werden. Dieses
     kann hier http://sourceforge.net/projects/win32diskimager/files/
     heruntergeladen werden.  
-    ![Eingabefenster von Win32 Disk Imager](images/win32-imagewriter.png"Eingabefenster von Win32 Disk Imager")
+    ![Eingabefenster von Win32 Disk Imager](images/win32-imagewriter.png "Eingabefenster von Win32 Disk Imager")
 
     Nach Installation und Programmstart die SD-Karte und das Image auswählen, anschließend den Vorgang
     starten.
