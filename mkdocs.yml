@@ -5,3 +5,6 @@ pages:
 - [Beispiel.md, Erste Schritte]
 - [KNX.md, KNX Anbindung] 
 - [license.md, Lizenzierung]
+- [Bindings.md, Bindings]
+- [Persistence.md, Persistence]
+- [Raspberry.md, Installation auf einem Raspberry PI]
