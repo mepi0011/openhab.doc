@@ -8,5 +8,5 @@ pages:
 - [Persistence.md, Persistence]
 - [Raspberry.md, Installation auf einem Raspberry PI]
 - [setpoint.md, Setpoint Beispiel]
-- [Viesmann.md, Kommunikation mit Viesmann Heizung via openHAB]
+- [Viessmann.md, Kommunikation mit Viessmann Heizung via openHAB]
 - [license.md, Lizenzierung]
