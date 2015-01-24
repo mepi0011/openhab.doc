@@ -1,8 +1,8 @@
 OpenHAB auf dem dem Raspberry PI
 ================================
 
-Die folgenden Kapitel wird die Installation und Verwendung von Raspbian
-auf dem Raspberry PI sowie die Nutzung von openHAB auf diesem System
+Die folgenden Kapitel wird die Installation und Verwendung von [Raspbian](www.raspbian.org "Raspbian.org Homepage")
+auf dem [Raspberry PI](http://www.raspberrypi.org/ "Raspberry PI Homepage") sowie die Nutzung von openHAB auf diesem System
 erklärt. Prinzipiell können für die Nutzung von openHAB auf dem
 Raspberry PI auch andere Betriebssysteme verwendet werden. Im Folgenden
 beschränke ich mich auf Raspbian. Hierbei handelt es sich wie bei den
@@ -15,57 +15,70 @@ Debian zusammen.
 Raspbian installieren
 ---------------------
 
-Das Raspbian Image kann entweder direkt von www.raspberry.org oder
-www.raspbian.org heruntergeladen werden. Alternativ kann für die
-Installation von Raspbian oder andere Systeme für den Raspberry NOBOS
-verwendet werden. Hierzu gibt es auf der Homepage www.raspberry.org
-ausführliche Installationsanleitungen und ein Video. Außerdem gibt es im
-Handel bereits SD Karte auf denen Raspbian oder NOBOS bereits
-vorinstalliert ist. Dies erleichtert es für Anfänger die sich mit der
-Installation des Betriebssystems nicht beschäftigen wollen. Im Folgenden
-wird die direkte Installation des Raspbian-Images beschrieben wie sie
-von raspberry.org heruntergeladen werden kann.
+Das Raspbian Image kann entweder direkt von [raspberry.org](http://www.raspberrypi.org/downloads/) oder
+[raspbian.org](http://raspbian.org/RaspbianImages) heruntergeladen werden. Alternativ kann für die
+Installation von Raspbian oder andere Betriebssysteme auf dem Raspberry [NOOBS](http://www.raspberrypi.org/downloads/)
+verwendet werden. Hierzu gibt es auf der Homepage raspberry.org
+ausführliche [NOOBS-Installationsanleitungen](http://www.raspberrypi.org/help/noobs-setup/) und ein Video. Im
+Handel gibt es SD Karte auf denen Raspbian oder NOOBS bereits vorinstalliert ist.
+Dies erleichtert es für Anfänger, die sich nicht mit der Installation des Betriebssystems beschäftigen wollen.   
+Im Folgenden wird die Installation des Raspbian-Images beschrieben. Für die initiale Installation empfiehlt es sich an den Raspberry einem Monitor oder TV sowie einer Tastatur und Maus anzuschließen.   
 
--   Die aktuelle Raspbian Version von www.raspberrypi.org herunterladen und entpacken.
+Materialien:  
+- Raspberry PI incl. passendes USB-Netzteil mit mind. 1A Ausgangsstrom
 
--   Raspbian-Image von einem Windows Betriebssystem auf eine SD-Karte
-    (mind. 4 GB) kopieren.  
-    Hierzu kann das Programm Win32DiskImager verwendet werden. Dieses
-    kann hier http://sourceforge.net/projects/win32diskimager/files/
-    heruntergeladen werden.  
-    ![Eingabefenster von Win32 Disk Imager](images/win32-imagewriter.png "Eingabefenster von Win32 Disk Imager")
+- SD Speicherkarte mit mind. 4 GB Speicherplatz  
+  (alternativ eine SD Karte mit vorinstalliertem Raspbian)
 
-    Nach Installation und Programmstart die SD-Karte und das Image auswählen, anschließend den Vorgang
-    starten.
+- TV oder Monitor mit HDMI Eingang
 
--   Raspbian-Image von einem linux System auf die SD-Karte kopieren.  
-    Hierzu kann das Programm dd im Terminal bzw. Konsole verwendet werden. Das Programm dd ist in den meisten Linux Distributionen bereits in der Grundinstallation enthalten.  
+- HDMI Kabel
 
-    Der Gerätepfad (hier /dev/sdd) für die SD Karte muss allerdings
-    zuerst ausfindig gemacht werden! In manchen Fällen ist das
-    Aufspielen den Images mit dem Parameter bs=4M fehlerhaft, in diesem
-    Fall das Ganze nochmals mit bs=1M testen.
+- USB Tastatur
 
--   Nach dem Aufspielen des Image auf die SD-Karte, diese in den
-    Raspberry einstecken und diesen an einen TV oder Beamer über HDMI
-    oder Composite anschließen und mit Spannung versorgen. Beim ersten
-    Start wird ein Konfigurationstool gestartet (siehe Bild) sollte dies
-    nicht der Fall sein, dann das Konfigurationstool wie folgt
-    aufgerufen werden: sudo raspi-config Im Konfigurationstool sollten
-    folgende Punkte nacheinander durchgeführt werden: Enable ssh (bei
-    der aktuellen Version nicht mehr Notwendig), change_pass,
-    configure_keyboard and expand_rootfs
+- USB Maus (alternativ)
 
--   Nach dem Einrichten der wichtigsten Einstellungen die Konfiguration
-    mit <Finish> abschließen. Der Raspberry boote neu, sollte dies
-    nicht der Fall sein, dann dies mit folgendem Befehl durchgeführt
-    werden:  
-    `sudo reboot -now`
+- PC mit Card Reader  
+  (wird nur benötigt, wenn keine SD Karte mit vorinstalliertem Raspbian vorliegt)
 
--   Nach einem Neustart kann man sich mit seinem eigenen Passwort
-    anmelden oder wenn dies nicht geändert wurde mit USER: pi,
-    Passwort:raspberry Achtung: Zu beginn ist die Tastatur nicht auf
-    deutsch eingestellt, wodurch y und z vertauscht sind!
+Vorbereitung:  
+Diese muss nur durchgeführt werden, wenn eine leere SD Karte vorliegt!
+
+- Die aktuelle Raspbian Version von www.raspberrypi.org herunterladen und entpacken.
+
+- Image auf SD Karte kopieren
+    - Windows:  
+      Um das Raspbian-Image von einem Windows Betriebssystem auf die SD-Karte zu kopieren, kann das Programm
+      [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/files/) verwendet werden.  
+      ![Eingabefenster von Win32 Disk Imager](images/win32-imagewriter.png "Eingabefenster von Win32 Disk Imager")
+      Nach Installation und Programmstart die SD-Karte und das Image auswählen, anschließend den Vorgang starten.
+    - Linux:  
+      Unter Linux kann das Programm dd verwendet werden. Das Programm dd ist bei den meisten Linux Distributionen bereits in der Grundinstallation enthalten. Um die Befehle ausführen zu können müssen die folgenden Befehle in einer Konsole ausgeführt werden.  
+      Um dd verwenden zu können, muss zuerst der Gerätepfad (hier /dev/sdd) für die SD Karte ausfindig gemacht werden!
+      1. `df -h` ausführen ohne gestekte SD Karte
+      2. SD Karte in Lesegerät stecken
+      3. `df -h` erneut ausführen die SD Karte sollte nun Beispielsweise wie folgt aufgeistet sein `/dev/mmcblk0pl` oder `/dev/sdd1`
+      4. `dd bs=4M if=<Pfad zum Image>/2014-12-24-wheezy-raspbian.img of=/dev/sdd` kopiert das Image auf die SD Karte  
+      In manchen Fällen ist das Aufspielen des Images mit dem Parameter bs=4M fehlerhaft, in diesem Fall das Ganze nochmals mit bs=1M testen.
+
+- Nach dem Aufspielen des Image auf die SD-Karte, diese in den Raspberry einstecken und am TV oder Monitor sowie die Tastatur und Maus 
+  anschließen. Beim ersten Start wird ein Konfigurationstool gestartet.  
+  ![Raspbian Konfigurationstool](images/raspi-config.png "Konfigurationstool für Raspbian")
+  Sollte dies nicht der Fall sein, kann das Konfigurationstool mit folgenden Befehl gestartet werden:  
+  ´sudo raspi-config Im Konfigurationstool sollten´
+  folgende Punkte im Konfigurationstool nacheinander durchführen:
+  1. Advanced Options --> ssh (ggf. bei neueren Version nicht mehr Notwendig)
+  2. Change User Password
+  3. Internationalisation Options (Sprache und Tastaturlayout)
+  4. Expand_Filesystems
+
+- Nach dem Einrichten der wichtigsten Einstellungen die Konfiguration mit <Finish> abschließen.  
+  Der Raspberry boote neu, sollte dies nicht der Fall sein, kann dies mit dem Befehl durchgeführt werden:  
+  `sudo reboot -now`
+
+- Nach einem Neustart kann man sich mit dem neu erstellten Passwort anmelden oder wenn dies nicht geändert wurde mit  
+  USER: pi, Passwort:raspberry  
+  Achtung: Zu beginn ist die Tastatur nicht auf deutsch eingestellt, wodurch y und z vertauscht sind!
 
 Installation des Midnight Commander (mc)
 ----------------------------------------

@@ -172,7 +172,7 @@ Die komplette Item-Datei sollte nun wie folgt aussehen:
 
 Damit das Beispiel noch lauffähig wird, benötigt openHAB noch die
 Sitemap-Datei. In ihr wird der Aufbau des Weboberfläche definiert. Im
-Ordner sitemaps wird eine Datei Haus.Sitemaps angelegt und folgendes
+Ordner sitemaps wird eine Datei Haus.Sitemap angelegt und folgendes
 eingetragen.
 
     sitemap Haus label="Hauptmenue"
