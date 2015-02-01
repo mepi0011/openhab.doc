@@ -1,16 +1,15 @@
 Erste Schritte mit openHAB
 ==========================
 
-Um die Funktionsweise von openHAB kennenzulernen wird im folgenden ein
-kleines Beispiel erstellt und stückweise erweitert. Für das Beispiel
-wird eine Gebäudestruktur eines Einfamilienhauses verwendet, das aus
+Die grundlegende Funktionsweise von openHAB, wird im folgenden ein kleines Beispiel Schritt für Schritt erklärt.
+Der [Code](../examples/house.zip "Test") für dieses Beispiel kann heruntergeladen werden.
+Für das Beispiel wird eine Gebäudestruktur eines Einfamilienhauses verwendet, das aus
 zwei Stockwerken und 12 Räumen besteht [siehe Abbildung [Grundriss]].
 Mit Hilfe der Gebäudestruktur wird im folgenden der Aufbau von Items,
 Gruppen und der Sitemap veranschaulicht.\
 Im Beispielhaus befindet sich in jedem Raum mindestens 1 KNX-Schalter,
 die Leuchten werden entweder über KNX-Schaltaktoren oder KNX-Dimmer
-angesteuert. Erst im Kapitel [sec:AnbindungKNX] wird auf die KNX
-Anbindung eingegangen und ist für das folgende Beispiel nicht relevant.
+angesteuert. Erst Kapitel Anbindung an den KNX-Bus wird auf die KNX Eweiterung eingegangen und ist für das folgende Beispiel nicht relevant.
 
 ![Grundriss EG Beispielhaus](images/grundriss_erdgeschoss.png "Grundriss vom EG des Beispielhaus")
 
@@ -43,33 +42,26 @@ es zu Fehlern bei openHab bzw. beim openHab-Designer kommen.
 Im Verzeichnis <Pfad_zu_openHAB>/configurations muss eine kopie der
 Datei openhab_default.cfg angelegt und in openhab.cfg umbenennen
 werden. Ohne diese Datei gibt openHAB eine Fehlermeldung aus! Die
-Einstellungen dieser Datei sind aktuell noch nicht relevant. Details
-hierzu werden in Kapitel [sec:AnbindungKNX] erläutert. Der Designer kann
+Einstellungen dieser Datei sind für das aktuell Beispiel noch nicht relevant. Der Designer kann
 nun gestartet werden. Je nach Betriebssystem und Rechenleistung kann
 dies einige Zeit dauern. Nach erfolgreichem Start, muss dem Designer der
-Pfad zum Verzeichnis „configurations“ von openHAB mitgeteilt werden
-(siehe Abbildung [Designer~C~onfig]). Hierzu das Ordner Symbol drücken
+Pfad zum Verzeichnis „configurations“ von openHAB mitgeteilt werden. Hierzu das Ordner Symbol drücken
 und anschließend im angezeigten Dialog das Verzeichnis auswählen in dem
 sich die openhab.cfg Datei befindet und mit OK bestätigen. In unserem
 Fall ist dies <Pfad_zu_openHAB>/configrurations.
 
 ![Konfiguration des openHAB Designer](images/openHAB_Designer_Configuration.png "Konfiguration des openHAB Designer")
 
-Danach sollte wie in Abbildung [](#DesignerConfig) der Reiter
-„configurations“ dargestellt werden. Die Vorbereitungen sind nun
+Danach sollte wie in folgender Abbildung der Reiter „configurations“ dargestellt werden. Die Vorbereitungen sind nun
 abgeschlossen und es kann mit dem Beispiel begonnen werden.
 
 ![Auswahl des Item-File](images/openHAB_Designer_Item_File.png "Auswahl des Item-File")
 
-Im Designer öffnen wir wie in Abbildung [Designer~I~tem] zu sehen ist
-mit einem doppelklick der linken Maustaste die Datei Haus.items. Die
-aktuell noch leere Datei erscheint nun in der Mitte des Designer. Nun
-können wir mit dem Anlegen der Gruppen und Items beginnen. Eine Gruppen
-Item Definition ist in openHAB wie folgt aufgebaut:
+Im Designer öffnen wir wie in der Abbildung oben zu sehen ist mit einem doppelklick der linken Maustaste die Datei Haus.items.
+Die aktuell noch leere Datei erscheint nun in der Mitte des Designer. Nun können wir mit dem Anlegen der Gruppen und Items beginnen. Eine Gruppen Item Definition ist in openHAB wie folgt aufgebaut:
 
 ![Item Befehlsreferenz](images/openHAB_Befehlsreferenz.png)
 
-[Befehlsreferenz~I~tem]
 
 In unserer Visualisierung sollen die Räume in das Erd- bzw. Obergeschoss
 gegliedert werden. Hierzu legen wir die Gruppe gEG und gOG an und tragen
@@ -79,14 +71,11 @@ folgendes in die Item.datei ein:
     Group gEG 	// Gruppe Erdgeschoss
     Group gOG 	// Gruppe Obergeschoss
 
-Die beiden Gruppen bestehen aus dem Schlüsselwort Group und ihrem Namen.
-Mehr wird hierfür aktuell nicht benötigt. Die Abbilding
-[Befehlsreferenz~I~tem] zeigt den prinzipiellen Aufbau eines Item.\
+Die beiden Gruppen bestehen aus dem Schlüsselwort Group und ihrem Namen. Mehr wird hierfür aktuell nicht benötigt.
 
 Wie in Programmiersprachen auch, kennt openHAB Kommentare. Diese können
-durch // für eine Zeile bzw. für mehrere Zeilen durch \* am Anfang und
-*/ am Ende eingeleitet werden. Die Kommentare werden in den
-Code-Baispielen dieses Buch grün dargestellt.
+durch // für eine Zeile bzw. für mehrere Zeilen durch \\* am Anfang und
+*/ am Ende eingeleitet werden.
 
 Nun müssen noch die Räume definieren werden. Zuvor wird für jeden Raum eine Gruppe definieren, in dem die eigentlichen Items (Schalter, Sensoren und Aktoren) zugeordnet werden.   
 Die Item-Datei erweitern wir mit folgendem Code:
@@ -104,8 +93,7 @@ Die Item-Datei erweitern wir mit folgendem Code:
     Group EG_Abstellraum	"Abstellraum"	<wardrobe2>	(gEG)
     Group EG_Flur		"Flur EG"			(gEG)
 
-Mit Hilfe des Codes und der Abbildung [Befehlsreferenz~I~tem] sollte der
-Aufbau verständlich werden.
+Mit Hilfe des Codes und der Abbildung "Befehlsreferenz" sollte der Aufbau verständlich werden.
 Items bestehen immer aus den Komponenten Funktion, Name, Text und Icon.
 
 Zum Schluss werden noch die eingentlichen Funktionen der einzelnen
@@ -179,7 +167,7 @@ eingetragen.
     {
      Frame {
             Group item=gOG	label="Obergeschoss"	icon="firstfloor"
-            Group item=gUG	label="Erdgeschoss"	icon="groundfloor"
+            Group item=gEG	label="Erdgeschoss"	icon="groundfloor"
            }
     }
 
@@ -207,6 +195,7 @@ Das Ergebniss des Ersten Beispiel sieht wie folgt aus:
 ![openHAB Ausgabe: EG Beispiel Haus](images/Haus_EG.png "UG des Beispielhaus")
 
 OpenHAB kann durch die Tastenkombination Strg+C beendet werden.
+
 
 Erweiterung des Beispielhaus
 ============================
