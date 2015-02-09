@@ -92,8 +92,8 @@ kann das Programm mc wie folgt aufgerufen werden: mc (ohne root Rechte)
 oder sudo mc (mit root Rechte)  
 ![Midnight Commander](images/mc_home.png "Midnight Commander")
 
-Statische IP-Adressen inrichten
--------------------------------
+Statische IP-Adressen einrichten
+--------------------------------
 
 Standardmäßig läuft die Netzwerkkarten mit DHCP. Möchte man einem der
 Netzwerk Schnittstellen eine eine feste IP Adresse zuweisen, muss unter
@@ -138,43 +138,4 @@ einen PC. Damit später der Autostart funktioniert, wird empfohlen die
 openHAB Dateien in das Verzeichnis /opt/openhab zu kopieren. Die Daten
 mit Hilfe von WinSPC oder über einen gemounteten USB Stick und mc an die
 gewünschte Stelle kopieren.
-
-Autostart von openHAB einrichten
---------------------------------
-
-Damit der Autostart funktioniert, werden die Dateien openhab und
-openhab.cfg benötigt. Die beiden Dateien werden am einfachsten am PC
-erstellt und anschließend auf den Raspberry kopiert. Die Script-Datei
-openhab:
-
-Die Konfiguration-Datei openhab.cfg
-
--   Die Script-Datei openhab in das Verzeichnis /etc/init.d/ kopieren
-
--   Die Konfigurationsdatei openhab.cfg in /etc/defaults kopieren
-
--   In das Verzeichnis wechseln in dem das Script openhab liegt cd
-    /etc/init.d
-
--   Die Datei ausführbar machen sudo chmod a+x openhab
-
--   Gruppe und Eigentümer der Datei ändern\
-    sudo chgrp root openhab\
-    sudo chown root openhab\
-
--   Überprüfen der Änderungen\
-    ls -l\
-    Die Ausgabe müsste wie folgt aussehen:\
-    -rwxr-xr-x 1 root root 1757 Apr 13 23:27 /etc/init.d/openhab\
-
--   Nachdem das Script ausführbar ist, diesen noch in die Runnnlevel
-    eintragen\
-    update-rc.d opehab defaults
-
--   Nun kann openHAB mit dem Befehl\
-    sudo /etc/init.d/openhab stop\
-    gestartet, bez mit\
-    sudo /etc/init.d/openhab stop\
-    gestoppt werden.
-
 

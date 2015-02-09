@@ -2,7 +2,7 @@ Erste Schritte mit openHAB
 ==========================
 
 Die grundlegende Funktionsweise von openHAB, wird im folgenden ein kleines Beispiel Schritt für Schritt erklärt.
-Der [Code](../examples/house.zip "Test") für dieses Beispiel kann heruntergeladen werden.
+Der [Code](https://github.com/mepi0011/openhab.doc/raw/master/examples/house.zip "Souce Code für Beispielhaus ohne KNX Erweiterung") für dieses Beispiel kann heruntergeladen werden.
 Für das Beispiel wird eine Gebäudestruktur eines Einfamilienhauses verwendet, das aus
 zwei Stockwerken und 12 Räumen besteht [siehe Abbildung [Grundriss]].
 Mit Hilfe der Gebäudestruktur wird im folgenden der Aufbau von Items,

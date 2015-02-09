@@ -7,6 +7,7 @@ pages:
 - ['Binding_HTTP.md', 'HTTP-Binding']
 - ['Persistence.md', 'Persistence']
 - ['Raspberry.md', 'Installation auf einem Raspberry PI']
+- ['Autostart.md', 'Autostart von openHAB auf dem Raspberry PI']
 - ['setpoint.md', 'Setpoint Beispiel']
-- ['Viessmann.md', 'Kommunikation mit Viessmann Heizung via openHAB']
+- ['Viessmann.md', 'Anbindung Viessmann Heizung via openHAB']
 - ['license.md', 'Lizenzierung']
