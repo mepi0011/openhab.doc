@@ -4,7 +4,7 @@ Autostart von openHAB einrichten
 Das Linux-System auf dem Raspberry PI kann so eingerichtet werden, dass openHAB bei einem Neustart automatisch gestartet wird.
 Voraussetzung für die korrekte Funktionsweise der folgenden Anleitung, ist eine Installation von openHAB nach den schritten der vorherigen Anleitung.  Wurde openHAB nicht nach dieser Anleitung installiert, müssen die Pfade dementsprechend angepasst werden.   
 Damit openHAB beim Booten automatisch startet, werden die beiden Script-Dateien openhab und openhab.cfg benötigt.  
-Hierzu einfach die [Dateien](https://github.com/mepi0011/openhab.doc/raw/master/examples/autostart.zip "Script-Files für openHAB Autostart") herunterladen, entpacken und anschliesend per WINSPC oder per USB Stick auf den Paspberry PI kopieren.   
+Hierzu einfach die [Dateien](https://github.com/mepi0011/openhab.doc/raw/master/examples/autostart.zip "Script-Files für openHAB Autostart") herunterladen, entpacken und anschliesend per WINSCP oder per USB Stick auf den Paspberry PI kopieren.   
 
 Die Script-Datei openhab:  
 
@@ -73,7 +73,7 @@ Die Konfiguration-Datei openhab.cfg
 Nachdem die Dateien heruntergeladen und entpackt wurden, diese auf den Raspberry PI in folgende Verzeichnisse kopieren.
  
 * Die Script-Datei openhab in das Verzeichnis /etc/init.d/ kopieren
-* Die Konfigurationsdatei openhab.cfg in /etc/defaults kopieren
+* Die Konfigurationsdatei openhab.cfg in /etc/default kopieren
 
 Um den Autostart einzurichten, müssen auf dem Raspberry nun folgende Schritte durchgeführt werden:
  
@@ -94,7 +94,7 @@ Um den Autostart einzurichten, müssen auf dem Raspberry nun folgende Schritte d
 
 5.  Nachdem das Script ausführbar ist, muss dieses noch in die Runnnlevel eintragen werden.  
     Hierzu folgenden Befehl ausführen:  
-    `update-rc.d opehab defaults`
+    `sudo update-rc.d opehab defaults`
 
 6.  Nun kann openHAB mit dem Befehl  
     `sudo /etc/init.d/openhab start` gestartet, bez mit `sudo /etc/init.d/openhab stop` gestoppt werden.
