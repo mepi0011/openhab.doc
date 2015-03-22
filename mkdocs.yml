@@ -9,5 +9,6 @@ pages:
 - ['Raspberry.md', 'Installation auf einem Raspberry PI']
 - ['Autostart.md', 'Autostart von openHAB auf dem Raspberry PI']
 - ['setpoint.md', 'Setpoint Beispiel']
-- ['Viessmann.md', 'Anbindung Viessmann Heizung via openHAB']
+- ['Kostal_inverter_HTTP.md', 'Anbindung Kostal Wechselrichter']
+- ['Viessmann.md', 'Anbindung Viessmann Heizung']
 - ['license.md', 'Lizenzierung']

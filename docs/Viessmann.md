@@ -50,7 +50,7 @@ zusammensetzen findet sich auf der Projektseite von openc. Im Internet
 findet man auch Beispieldateien.
 
 1.  Anlegen eines des Ordner vcontrold im Verzeichnis /etc  
-        sudo mkdir /etc/vcontrold
+    `sudo mkdir /etc/vcontrold`
 
 2.  Die Dateien vcontrold.xml und vito.xml in das Verzeichnis /etc/vcontrold kopieren
 
@@ -60,11 +60,11 @@ findet man auch Beispieldateien.
     Der Verwendete Port wird im Feld <tty> eingerichtet und die ID der Heizungsanlage im Feld <device ID=“xxxx“> Auszug einer vcontrold.xml Datei für eine Vitocal300G:
 
 4.  Nun kann der Dämon vcnontrold das erste mal gestartet werden  
-    sudo vcontrold
+    `sudo vcontrold`
 
 5.  Nach erfolgreichen Start von vcontrold kann ein erste Verbindung/Abfrage zur Heizung erfolgen.  
     Mit dem folgenden Befehl wird die Außentemperatur abgefragt.  
-        vclient -h 127.0.0.1:3002 -c getTempA
+    `vclient -h 127.0.0.1:3002 -c getTempA`
 
 Autostart von vcontrold einrichten
 ----------------------------------
@@ -75,26 +75,29 @@ Startscript in /etc/init.d erstellt.
 
 1.  Erstellen des vcontrold Start-Script mit folgendem Inhalt und dieses unter /etc/init.d speichern.
 
-2.  In das Verzeichnis wechseln in dem das Script openhab liegt
-        cd /etc/init.d
+2.  In das Verzeichnis wechseln in dem das Script openhab liegt  
+    `cd /etc/init.d`
 
-3.  Die Datei ausführbar machen
-        sudo chmod a+x vcontrold
+3.  Die Datei ausführbar machen  
+    `sudo chmod a+x vcontrold`
 
-4.  Gruppe und Eigentümer der Datei ändern
-        sudo chgrp root vcontrold
-        sudo chown root vcontrold
+4.  Gruppe und Eigentümer der Datei ändern  
+    `sudo chgrp root vcontrold`  
+    `sudo chown root vcontrold`
 
 5.  Überprüfen der Änderungen
-        ls -l
+    `ls -l`
     Die Ausgabe müsste wie folgt aussehen:
-        -rwxr-xr-x 1 root root 1757 Apr 13 23:27 /etc/init.d/vcontrold
+    `-rwxr-xr-x 1 root root 1757 Apr 13 23:27 /etc/init.d/vcontrold`
 
-6.  Nachdem das Script ausführbar ist, diesen noch in die Runnnlevel eintragen
-        sudo update-rc.d vcontrold defaults
+6.  Nachdem das Script ausführbar ist, diesen noch in die Runnnlevel eintragen  
+    `sudo update-rc.d vcontrold defaults`
 
-7.  Nun kann openHAB mit dem Befehl
-        sudo /etc/init.d/vcontrold start
-    gestartet, bez mit
-        sudo /etc/init.d/openhab stop
+7.  Nun kann openHAB mit dem Befehl  
+    `sudo /etc/init.d/vcontrold start`  
+    gestartet, bez mit  
+    `sudo /etc/init.d/vcontrold stop`  
     gestoppt werden.
+
+
+PS: Der Autostart kann auch mit `sudo update-rc.d -n vcontrold remove` rückgängig gemacht werden.
