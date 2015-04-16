@@ -25,34 +25,27 @@ Dies erleichtert es für Anfänger, die sich nicht mit der Installation des Betr
 Im Folgenden wird die Installation des Raspbian-Images beschrieben. Für die initiale Installation empfiehlt es sich an den Raspberry einem Monitor oder TV sowie einer Tastatur und Maus anzuschließen.   
 
 Materialien:  
-- Raspberry PI incl. passendes USB-Netzteil mit mind. 1A Ausgangsstrom
-
+- Raspberry PI incl. passendes USB-Netzteil mit einem mindest Ausgangsstrom von 1 A
 - SD Speicherkarte mit mind. 4 GB Speicherplatz  
   (alternativ eine SD Karte mit vorinstalliertem Raspbian)
-
 - TV oder Monitor mit HDMI Eingang
-
 - HDMI Kabel
-
 - USB Tastatur
-
 - USB Maus (alternativ)
-
 - PC mit Card Reader  
   (wird nur benötigt, wenn keine SD Karte mit vorinstalliertem Raspbian vorliegt)
 
 Vorbereitung:  
-Diese muss nur durchgeführt werden, wenn eine leere SD Karte vorliegt!
+Diese muss nur durchgeführt werden, wenn eine leere SD Karte vorliegt auf die das Raspbian-Image aufgespielt werden soll!
 
 - Die aktuelle Raspbian Version von www.raspberrypi.org herunterladen und entpacken.
-
-- Image auf SD Karte kopieren
-    - Windows:  
+- Image auf SD Karte kopieren:
+    - unter Windows:  
       Um das Raspbian-Image von einem Windows Betriebssystem auf die SD-Karte zu kopieren, kann das Programm
       [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/files/) verwendet werden.  
-      ![Eingabefenster von Win32 Disk Imager](images/win32-imagewriter.png "Eingabefenster von Win32 Disk Imager")
+      ![Eingabefenster von Win32 Disk Imager](images/win32-imagewriter.png "Eingabefenster von Win32 Disk Imager")  
       Nach Installation und Programmstart die SD-Karte und das Image auswählen, anschließend den Vorgang starten.
-    - Linux:  
+    - unter Linux:  
       Unter Linux kann das Programm dd verwendet werden. Das Programm dd ist bei den meisten Linux Distributionen bereits in der Grundinstallation enthalten. Um die Befehle ausführen zu können müssen die folgenden Befehle in einer Konsole ausgeführt werden.  
       Um dd verwenden zu können, muss zuerst der Gerätepfad (hier /dev/sdd) für die SD Karte ausfindig gemacht werden!
       1. `df -h` ausführen ohne gestekte SD Karte
@@ -60,7 +53,6 @@ Diese muss nur durchgeführt werden, wenn eine leere SD Karte vorliegt!
       3. `df -h` erneut ausführen die SD Karte sollte nun Beispielsweise wie folgt aufgeistet sein `/dev/mmcblk0pl` oder `/dev/sdd1`
       4. `dd bs=4M if=<Pfad zum Image>/2014-12-24-wheezy-raspbian.img of=/dev/sdd` kopiert das Image auf die SD Karte  
       In manchen Fällen ist das Aufspielen des Images mit dem Parameter bs=4M fehlerhaft, in diesem Fall das Ganze nochmals mit bs=1M testen.
-
 - Nach dem Aufspielen des Image auf die SD-Karte, diese in den Raspberry einstecken und am TV oder Monitor sowie die Tastatur und Maus 
   anschließen. Beim ersten Start wird ein Konfigurationstool gestartet.  
   ![Raspbian Konfigurationstool](images/raspi-config.png "Konfigurationstool für Raspbian")
@@ -96,7 +88,7 @@ Statische IP-Adressen einrichten
 --------------------------------
 
 Standardmäßig läuft die Netzwerkkarten mit DHCP. Möchte man einem der
-Netzwerk Schnittstellen eine eine feste IP Adresse zuweisen, muss unter
+Netzwerk Schnittstellen eine eine feste IP-Adresse zuweisen, muss unter
 Linux die Datei /etc/network/interface angepasst werden. Die Datei
 selbst kann allerdings nur von root angepasst werden. Um die Datei
 anzupassen, wie folgt vorgehen:
@@ -109,13 +101,14 @@ anzupassen, wie folgt vorgehen:
 3.  Standardmäßig sollte folgendes drin stehen:  
     ![Inhalt der Datei interface](images/mc_network.png "Inhalt der Datei interface")
 
-4.  Um z.B. der Netzwerkschnittstelle eine feste IP einzurichten, muss
-    der Block für eth0 wie folgt geändert werden: Man erkennt sehr
-    schnell dass das Wort ’static’ wohl eine feste IP-Adresse andeutet.
-    address - Die IP-Adresse für das Interface broadcast - Die
-    Broadcast-Adresse (Endet meist auf .255) netmask - Die Subnetzmaske
-    gateway - Das Gateway für Zieladressen die nicht im Lokalen Netz
-    liegen
+4.  Zum einrichten der festen IP Adresse, muss der Block für eth0 wie folgt geändert werden:  
+    ![Inhalt der Datei interface mit fester IP-Adresse](images/mc_network_ip.png "Inhalt der Datei interface mit fester IP-Adresse")
+    Erklärung:  
+    static - Definition für feste IP-Adresse  
+    address - Die IP-Adresse für das Interface  
+    broadcast - Die Broadcast-Adresse (Endet meist auf .255)  
+    netmask - Die Subnetzmaske  
+    gateway - Das Gateway für Zieladressen die nicht im Lokalen Netz liegen
 
 Quelle: http://juliusbeckmann.de/blog/statische-ip-adressen-in-debian-und-konsorten-einrichten.html
 
