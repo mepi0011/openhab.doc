@@ -3,13 +3,10 @@ Erste Schritte mit openHAB
 
 Die grundlegende Funktionsweise von openHAB, wird im folgenden ein kleines Beispiel Schritt für Schritt erklärt.
 Der [Code](https://github.com/mepi0011/openhab.doc/raw/master/examples/house.zip "Souce Code für Beispielhaus ohne KNX Erweiterung") für dieses Beispiel kann heruntergeladen werden.
-Für das Beispiel wird eine Gebäudestruktur eines Einfamilienhauses verwendet, das aus
-zwei Stockwerken und 12 Räumen besteht [siehe Abbildung [Grundriss]].
-Mit Hilfe der Gebäudestruktur wird im folgenden der Aufbau von Items,
-Gruppen und der Sitemap veranschaulicht.\
-Im Beispielhaus befindet sich in jedem Raum mindestens 1 KNX-Schalter,
-die Leuchten werden entweder über KNX-Schaltaktoren oder KNX-Dimmer
-angesteuert. Erst Kapitel Anbindung an den KNX-Bus wird auf die KNX Eweiterung eingegangen und ist für das folgende Beispiel nicht relevant.
+Für das Beispiel wird eine Gebäudestruktur eines Einfamilienhauses verwendet, das aus zwei Stockwerken und 12 Räumen besteht [siehe Abbildung [Grundriss]].
+Mit Hilfe der Gebäudestruktur wird im folgenden der Aufbau von Items, Gruppen und der Sitemap veranschaulicht.
+Im Beispielhaus befindet sich in jedem Raum mindestens 1 KNX-Schalter, die Leuchten werden entweder über KNX-Schaltaktoren oder KNX-Dimmer
+angesteuert. Im nächsten Kapitel *Anbindung an den KNX-Bus* wird auf die KNX Eweiterung eingegangen und ist für das folgende Beispiel nicht relevant.
 
 ![Grundriss EG Beispielhaus](images/grundriss_erdgeschoss.png "Grundriss vom EG des Beispielhaus")
 
@@ -27,19 +24,20 @@ Konfigurationsdatei openhab.cfg angelegt werden. Beim ersten Start des
 openHAB Designer muss dieser ebenfalls einrichten werden.
 
 Als erstes wird mit Hilfe eines gewöhnlichen Texteditors die Item-Datei
-im Verzeichnis <Pfad_zu_openHAB>/configurations/items angelegt. In
+im Verzeichnis <Pfad\_zu\_openHAB\>/configurations/items angelegt. In
 unserem Beispiel nennen wir diese Haus.items. In ihr werden zukünftig
 alle benötigen Items und Gruppen definiert.
 
 * * * * *
-![Hinweis!](images/Warning.png "Hinweis: Auf Dateierweiterung achten!")
-Beim Anlegen der Datei Haus.items darauf achten, dass die
-Dateierweiterung nicht .txt ist! Bei inkorrekter Dateierweiterung kann
-es zu Fehlern bei openHab bzw. beim openHab-Designer kommen.
-
+<tr>
+<td> ![Hinweis!](images/Warning.png "Hinweis: Auf Dateierweiterung achten!") </td>
+<td> Beim Anlegen der Datei Haus.items darauf achten, dass die Dateierweiterung nicht .txt ist! Bei inkorrekter Dateierweiterung kann
+es zu Fehlern bei openHab bzw. beim openHab-Designer kommen. </td>
+</tr>
+</table>
 * * * * *
 
-Im Verzeichnis <Pfad_zu_openHAB>/configurations muss eine kopie der
+Im Verzeichnis <Pfad\_zu\_openHAB\>/configurations muss eine kopie der
 Datei openhab_default.cfg angelegt und in openhab.cfg umbenennen
 werden. Ohne diese Datei gibt openHAB eine Fehlermeldung aus! Die
 Einstellungen dieser Datei sind für das aktuell Beispiel noch nicht relevant. Der Designer kann
@@ -48,7 +46,7 @@ dies einige Zeit dauern. Nach erfolgreichem Start, muss dem Designer der
 Pfad zum Verzeichnis „configurations“ von openHAB mitgeteilt werden. Hierzu das Ordner Symbol drücken
 und anschließend im angezeigten Dialog das Verzeichnis auswählen in dem
 sich die openhab.cfg Datei befindet und mit OK bestätigen. In unserem
-Fall ist dies <Pfad_zu_openHAB>/configrurations.
+Fall ist dies <Pfad\_zu\_openHAB\>/configrurations.
 
 ![Konfiguration des openHAB Designer](images/openHAB_Designer_Configuration.png "Konfiguration des openHAB Designer")
 
@@ -74,8 +72,8 @@ folgendes in die Item.datei ein:
 Die beiden Gruppen bestehen aus dem Schlüsselwort Group und ihrem Namen. Mehr wird hierfür aktuell nicht benötigt.
 
 Wie in Programmiersprachen auch, kennt openHAB Kommentare. Diese können
-durch // für eine Zeile bzw. für mehrere Zeilen durch \\* am Anfang und
-*/ am Ende eingeleitet werden.
+durch // für eine Zeile bzw. für mehrere Zeilen durch \\\* am Anfang und
+\*/ am Ende eingeleitet werden.
 
 Nun müssen noch die Räume definieren werden. Zuvor wird für jeden Raum eine Gruppe definieren, in dem die eigentlichen Items (Schalter, Sensoren und Aktoren) zugeordnet werden.   
 Die Item-Datei erweitern wir mit folgendem Code:
@@ -173,15 +171,15 @@ eingetragen.
 
 Nachdem nun die drei wichtigsten Dateien angelegt wurden, kann das
 Beispiel gestartet werden. Hierzu öffnen wir die Konsole (Linux) bzw.
-die Dos-Box (Windows) und wechseln mit dem Befehl   
-    cd <Pfad_zu_openHAB>/runtime (Linux)
-oder
-    dir <Pfad_zu_openHAB>\runtime (Windows)
-in das Verzeichnis von openHAB.
-Anschließend wird openHAB mit einem der folgenden Befehl gestartet.
-    ./start.sh (Linux)
-oder
-    start.bat (Windows)
+die Dos-Box (Windows) und wechseln mit dem Befehl  
+` cd <Pfad\_zu\_openHAB\>/runtime (Linux) `  
+oder  
+` dir <Pfad\_zu\_openHAB\>\runtime (Windows) `  
+in das Verzeichnis von openHAB.  
+Anschließend wird openHAB mit einem der folgenden Befehl gestartet.  
+` ./start.sh (Linux) `  
+oder  
+` start.bat (Windows) `  
 
 Nach erfolgreichem Start öffnen wir einen Browser und geben folgendes
 ein:   

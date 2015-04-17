@@ -8,15 +8,15 @@ OpenHAB Runtime
 ---------------
 
 Die aktuelle Version kann von der Projektseite [openhab.org](http://www.openhab.org)
-heruntergeladen und in einem beliebigen Ordner entpacken werden.   
+heruntergeladen und in einem beliebigen Ordner entpacken werden.  
 
-z.B.:   
-Linux:  /openhab/runtime   
+z.B.:  
+Linux: /openhab/runtime   
 Windows: E:\openhab\runtime\   
 
 Um die Schreibweise zu vereinheitlichen, wird in den folgenden Kapitel
-das Verzeichnis mit <Pfad_zu_openHAB> ersetzt. Zum Ausführen von
-openHAB, wechseln sie in das Verzeichnis <Pfad_zu_openHAB>. Abhängig
+das Verzeichnis mit <Pfad\_zu\_openHAB\> ersetzt. Zum Ausführen von
+openHAB, wechseln sie in das Verzeichnis <Pfad\_zu\_openHAB\>. Abhängig
 vom verwendeten Betriebssystem führen sie eines der beiden Scripte aus.   
 Linux: start.sh   
 Windows: start.bat   
@@ -34,15 +34,17 @@ openHAB-Runtime, können auch die Bindings (Addons) von openhab.org
 heruntergeladen und in einen beliebigen Ordner entpackt werden. Abhängig
 davon mit welchen Geräten man kommunizieren möchte wird ein
 entsprechendes Binding benötigt. Dieses wird in den Ordner
-\<Pfad\_zu\_openHAB\>/addons kopiert. Nach einer evtl. Konfiguration des
+<Pfad\_zu\_openHAB\>/addons kopiert. Nach einer evtl. Konfiguration des
 Binding in der openHAB-Konfigurationsdatei openhab.cfg und einem
 Neustart, steht dies zur Verfügung.
 
 * * * * *
-![Hinweis!](images/Warning.png "Hinweis! Konfiguration Bindings in der openhab.cfg")
-Einige Bindings erfordern eine Konfiguration in der
-openHAB-Konfigurationsdatei openhab.cfg.
-
+<table>
+<tr>
+<td> ![Hinweis!](images/Warning.png "Hinweis! Konfiguration Bindings in der openhab.cfg") </td>
+<td> Einige Bindings erfordern eine Konfiguration in der openHAB-Konfigurationsdatei openhab.cfg. </td>
+</tr>
+</table>
 * * * * *
 
 openHAB Designer
