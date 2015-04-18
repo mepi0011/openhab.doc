@@ -31,8 +31,7 @@ alle benötigen Items und Gruppen definiert.
 * * * * *
 <tr>
 <td> ![Hinweis!](images/Warning.png "Hinweis: Auf Dateierweiterung achten!") </td>
-<td> Beim Anlegen der Datei Haus.items darauf achten, dass die Dateierweiterung nicht .txt ist! Bei inkorrekter Dateierweiterung kann
-es zu Fehlern bei openHab bzw. beim openHab-Designer kommen. </td>
+<td> Beim Anlegen der Datei Haus.items darauf achten, dass die Dateierweiterung nicht .txt ist! Bei inkorrekter Dateierweiterung kann es zu Fehlern bei openHab bzw. beim openHab-Designer kommen. </td>
 </tr>
 </table>
 * * * * *
