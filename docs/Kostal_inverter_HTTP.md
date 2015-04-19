@@ -2,15 +2,14 @@ Anbindung Kostal Wechselrichter mit dem HTTP Binding
 ====================================================
 
 Das folgende Beispiel zeigt die Anbindung eines Kostal Piko
-Wechselrichter mit Hilfe des HTTP Binding.  
-Damit alle die von openHAB visualisierten Werte dem gleichen Zeitpunkt entsprechen, wird in diesem beispiel auch die Caching Funktion des HTTP Binding verwendet. Die englische Version des Beispiels, ist im  openHAB Wiki zu finden.  
+Wechselrichter mit Hilfe des HTTP Binding. Damit alle visualisierten Werte dem gleichen Zeitpunkt entsprechen, wird in diesem Beispiel die Caching Funktion des HTTP Binding verwendet. Eine [englische Version](https://github.com/openhab/openhab/wiki/Samples-Binding-Config#how-to-get-data-from-kostal-piko-solar-inverter-via-http-binding) dieses des Beispiels, ist im  openHAB Wiki zu finden.  
 
 ![Ausgabe der Kostal Wechselrichter](images/kostal_solar_inverter.png "HTTP Ausgabe des Kostal Wechselrichter")
 
 
 Einrichten der Caching Funktion
 ------------------------------
-Um die Caching Funktion des HTTP Bindings zu nutzen, muss die Datei openhab.cfg wie folgt geändert werden:  
+Um die Caching Funktion des HTTP Bindings zu nutzen, muss die Datei *openhab.cfg* wie folgt geändert werden:  
 
 ```
 ############################### HTTP Binding ##########################################
@@ -28,8 +27,11 @@ http:kostal-wechselrichter-cache.updateInterval=60000
 ```
 
 * * * * *
-![Hinweis!](images/Warning.png "Hinweis! Passwort und IP-Addresse anpassen")
-Bitte ersetzen sie im Beispiel oben das <Passwort> und die <IP_des_Wechselrichter> mit ihren Anlagendaten!
+<tr>
+<td> ![Hinweis!](images/Warning.png "Hinweis! Passwort und IP-Addresse anpassen") </td>
+<td> Bitte ersetzen sie \<Passwort\> und \<IP_des_Wechselrichter\> mit den Daten ihren Anlage! </td>
+</tr>
+</table>
 * * * * *
 
 
@@ -45,12 +47,12 @@ Number Solar_Gesamt             "Ertrag (gesamt) [%.0f kWh]"  <energy>     { htt
 Number Solar_Tagesenergie       "Ertrag (am Tag) [%.2f kWh]"  <energy>     { http="<[kostal-wechselrichter-cache:30000:REGEX(.*Tagesenergie</td>.*?([0-9\\.]*)</td>.*)]" }
 
 /* PV Generator String 1*/
-Number Solar_PVG_Str1_Spannung  "String1 Spannung [%d V]"                    { http="<[kostal-wechselrichter-cache:30000:REGEX(.*?String 1.*?Spannung</td>.*?(\\d*)</td>.*)]" }
-Number Solar_PVG_Str1_Strom     "String1 Strom [%.2f A]"                     { http="<[kostal-wechselrichter-cache:30000:REGEX(.*?String 1.*?Strom</td>.*?([0-9.]*)</td>.*)]" }
+Number Solar_PVG_Str1_Spannung  "String1 Spannung [%d V]"                  { http="<[kostal-wechselrichter-cache:30000:REGEX(.*?String 1.*?Spannung</td>.*?(\\d*)</td>.*)]" }
+Number Solar_PVG_Str1_Strom     "String1 Strom [%.2f A]"                   { http="<[kostal-wechselrichter-cache:30000:REGEX(.*?String 1.*?Strom</td>.*?([0-9.]*)</td>.*)]" }
 
 /* PV Generator String 2*/
-Number Solar_PVG_Str2_Spannung  "String2 Spannung [%d V]"                    { http="<[kostal-wechselrichter-cache:30000:REGEX(.*?String 2.*?Spannung</td>.*?(\\d*)</td>.*)]" }
-Number Solar_PVG_Str2_Strom     "String2 Strom [%.2f A]"                     { http="<[kostal-wechselrichter-cache:30000:REGEX(.*?String 2.*?Strom</td>.*?([0-9.]*)</td>.*)]" }
+Number Solar_PVG_Str2_Spannung  "String2 Spannung [%d V]"                  { http="<[kostal-wechselrichter-cache:30000:REGEX(.*?String 2.*?Spannung</td>.*?(\\d*)</td>.*)]" }
+Number Solar_PVG_Str2_Strom     "String2 Strom [%.2f A]"                   { http="<[kostal-wechselrichter-cache:30000:REGEX(.*?String 2.*?Strom</td>.*?([0-9.]*)</td>.*)]" }
 
 /* Ausgangsleistung & Spannung L1 */
 Number Solar_AL_L1_Spannung     "L1 Spannung [%d V]"                       { http="<[kostal-wechselrichter-cache:30000:REGEX(.*?String 1.*?Spannung</td>.*?Spannung</td>.*?(\\d*)</td>.*)]" }
