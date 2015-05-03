@@ -54,7 +54,7 @@ Struktur kann auf der JSON Homepage (http://json.org/json-de.html)
 nachgelesen werden\
 
 Voraussetzung für die Handhabung von JSON in openHAB ist, dass die
-Aufgerufene Seite ein JSON Vormat ausgibt. Im Folgenden Beispiel gibt
+Aufgerufene Seite ein JSON Format ausgibt. Im Folgenden Beispiel gibt
 der Aufruf von “http://10.90.30.100:8080/tv/getTuned” folgende JSON
 Struktur zurück:\
 
