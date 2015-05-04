@@ -77,7 +77,7 @@ Nachdem die Dateien heruntergeladen und entpackt wurden, diese auf den Raspberry
 
 Um den Autostart einzurichten, müssen auf dem Raspberry nun folgende Schritte durchgeführt werden:
  
-1. In das Verzeichnis wechseln in dem das Script openhab liegt  
+1. In das Verzeichnis wechseln in dem das Script openhab liegt / kopiert wird  
    `cd /etc/init.d`
 
 2. Die Dateieigenschaften ändern, damit diese ausgeführt werden kann  
@@ -91,10 +91,13 @@ Um den Autostart einzurichten, müssen auf dem Raspberry nun folgende Schritte d
    `ls -l`  
    Die Ausgabe müsste wie folgt aussehen:  
    `-rwxr-xr-x 1 root root 1757 Apr 13 23:27 /etc/init.d/openhab`
+   
+5.  In das Verzeichnis wechseln in das die Konfigurationsdatei openhab.cfg kopiert wird  
+    `ch /etc/default`
 
 5.  Nachdem das Script ausführbar ist, muss dieses noch in die Runnnlevel eintragen werden.  
     Hierzu folgenden Befehl ausführen:  
-    `sudo update-rc.d opehab defaults`
+    `sudo update-rc.d openhab defaults`
 
 6.  Nun kann openHAB mit dem Befehl  
     `sudo /etc/init.d/openhab start` gestartet, bez mit `sudo /etc/init.d/openhab stop` gestoppt werden.

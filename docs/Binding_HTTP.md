@@ -2,7 +2,7 @@ HTTP Binding
 ============
 
 Das HTTP Binding ist wie z.B. das KNX Binding als extra Modul im
-Zip-file Addons enthalten. Um mit openHAB Anfragen an eine URL zu senden
+Zip-File Addons enthalten. Um mit openHAB Anfragen an eine URL zu senden
 wenn bestimmte Ereignuisse erfolgen oder um Zyklisch Daten einer URL
 abzufragen, muss das HTTP Binding in das Verzeichnis
 <Pfad_zu_openHAB>/addons kopierte und die openHAB Konfiguration
@@ -51,12 +51,12 @@ Die JavaScript Object Notation, kurz JSON, ist ein kompaktes Datenformat
 in einer einfach lesbaren Textform zum Zweck des Datenaustauschs
 zwischen Anwendungen oder Geräten. Eine Einführung zum Aufbau der
 Struktur kann auf der JSON Homepage (http://json.org/json-de.html)
-nachgelesen werden\
+nachgelesen werden  
 
 Voraussetzung für die Handhabung von JSON in openHAB ist, dass die
 Aufgerufene Seite ein JSON Format ausgibt. Im Folgenden Beispiel gibt
 der Aufruf von “http://10.90.30.100:8080/tv/getTuned” folgende JSON
-Struktur zurück:\
+Struktur zurück:  
 
     { "callsign": "KSBW",
        "date": "20131126",

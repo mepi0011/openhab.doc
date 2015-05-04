@@ -10,7 +10,25 @@ veröffentlicht. Mit Hilfe dieser Informationen ist es möglich dievers Informat
 ## Auslesen der Daten via JSON
 Diese Lösung verwendet das exec Binding in Kombination mit einem Linux Bash Skript.
 Um das Skript ausführen zu können, müssen die Programme curl and jq instaliert sein.
-In dem meisten Linux Distributionen ist curl and JQ enthalten. Solte jq mit in den Paketquellen der verwendeten Distribution (z. B. raspbian) nicht enthalten sein, so kann es von der [Projekt Homepage](http://stedolan.github.io/jq/) heruntergeladen und installiert werden.  
+In dem meisten Linux Distributionen ist curl and JQ enthalten. Solte jq mit in den Paketquellen der verwendeten Distribution (z. B. raspbian) nicht enthalten sein, so kann es von der [Projekt Homepage](http://stedolan.github.io/jq/) heruntergeladen und [installiert](https://josef-friedrich.de/install-jq-on-raspberry-pi/) werden.  
+
+### jq auf dem Raspberry installieren
+
+1.  jq in das aktuelle Verzeichnis herunterladen  
+    `curl -O http://stedolan.github.io/jq/download/source/jq-1.4.tar.gz`
+
+2.  die heruntergeladene Datei entpacken  
+    `tar xfvz jq-1.4.tar.gz`
+
+3.  in das Verzeichnis wechseln in dem die entpackten Dateien liegen  
+    `cd jq-1.4`
+
+4.  Zur Installation folgende drei Befehle ausführen  
+    ```
+    ./configure
+    make
+    sudo make install
+    ```
 
 Das folgende Bash-Skript *bcontrol* liest die Daten über die B-Control Energie Manager JSON Schnittstelle und speichert die Ausgabe in die Datei *bcontrol.out* im Verzeichnis */opt/bcontrol*.  
 
