@@ -3,10 +3,10 @@ HTTP Binding
 
 Das HTTP Binding ist wie z.B. das KNX Binding als extra Modul im
 Zip-File Addons enthalten. Um mit openHAB Anfragen an eine URL zu senden
-wenn bestimmte Ereignuisse erfolgen oder um Zyklisch Daten einer URL
+wenn bestimmte Ereignisse erfolgen oder um zyklisch Daten einer URL
 abzufragen, muss das HTTP Binding in das Verzeichnis
-<Pfad_zu_openHAB>/addons kopierte und die openHAB Konfiguration
-angepasst werden. Im folgenden wird dies detailliert erklärt.
+<Pfad_zu_openHAB>/addons kopiert und die openHAB Konfiguration
+angepasst werden. Im Folgenden wird dies detailliert erklärt.
 
 Item Binding Konfiguration
 --------------------------
@@ -17,7 +17,7 @@ Informationen in die Item Datei (im Verzeichnis configuration/items)
 einträgt. Die Schreibweise für die Konfiguration wird unterteilt ob
 Daten an die URL gesendet oder empfangen werden:
 
-Eingabe: `http:"<[<url>:<refreshintervalinmilliseconds>:<transformationrule>]"`   
+Eingabe: `http:"<[<url>:<refreshintervalinmilliseconds>:<transformationrule>]"`  
 Ausgabe: `http:">[<command>:<httpmethod>:<url>]"`  
 
 Für die Ausgabe sind zwei spezielle Komandos verfügbar:  
@@ -54,7 +54,7 @@ Struktur kann auf der JSON Homepage (http://json.org/json-de.html)
 nachgelesen werden  
 
 Voraussetzung für die Handhabung von JSON in openHAB ist, dass die
-Aufgerufene Seite ein JSON Format ausgibt. Im Folgenden Beispiel gibt
+aufgerufene Seite ein JSON Format ausgibt. Im Folgenden Beispiel gibt
 der Aufruf von “http://10.90.30.100:8080/tv/getTuned” folgende JSON
 Struktur zurück:  
 
@@ -78,14 +78,14 @@ Struktur zurück:
        "title": "Today"
      }
 
-Es soll der titel ausgelesen werden, hierzu wird das Item wie folgt
-definiert werden:
+Es soll der Titel ausgelesen werden, hierzu wird das Item wie folgt
+definiert:
 
     String DirecTV1_Channel "Aktueller Kanal" { http="<[http://10.90.30.100:8080/tv/getTuned:30000:JS(getValue.js)]" }
 
-Wichtig für die fehlerfreie Funktion ist, dass noch eine Datei **getValue.js** im Verzeichnis <Pfad_zu_openHAB>/configuration/transform/ angelegt wird. Der Dateinamen kann dabei frei gewählt werden, wichtig dabei ist, dass dieser gleich ist wie im zugehörigen Item.
+Wichtig für die fehlerfreie Funktion ist, dass noch eine Datei **getValue.js** im Verzeichnis <Pfad_zu_openHAB>/configurations/transform/ angelegt wird. Der Dateinamen kann dabei frei gewählt werden, wichtig dabei ist, dass dieser gleich ist wie im zugehörigen Item.
 
-In der Erstellten Datei **getValue.js** wird nun definiert welches Name/Wert Paar ausgelesen wird. Der Inhalt dieser Datei besteht aus der Zeile **JSON.parse(input).\<NameWert Paar\>;**   
+In der erstellten Datei **getValue.js** wird nun definiert welches Name/Wert Paar ausgelesen werden soll. Der Inhalt dieser Datei besteht aus der Zeile **JSON.parse(input).\<NameWert Paar\>;**  
 In unserem Beispiel ist dies title: Today. Folglich wird folgender
 Inhalt in der Datei **getValue.js** stehen:
 
@@ -94,18 +94,17 @@ Inhalt in der Datei **getValue.js** stehen:
 Seiten zwischenspeichern (Caching)
 ----------------------------------
 
-Seit openHAB 1.3 unterstützt das HTTP binding die möglich bis zu zwei verschiedene Seiten zwischen zu speichern. Damit können mehrere Items die enpfangenen Daten auswerten, ohne die Seite nochmals abzurufen.
+Seit openHAB 1.3 unterstützt das HTTP binding die Möglichkeit bis zu zwei verschiedene Seiten zwischenzuspeichern. Damit können mehrere Items die empfangenen Daten auswerten, ohne die Seite nochmals abzurufen.
 
 Hierzu muss lediglich in der openHAB Konfigurationsdatei openhab.cfg der Abschnitt HTTP Binding angepasst werden.
 
-    % ############################### HTTP Binding ##########################################
-    % # URL of the first cache item
-    % # http:<cacheItemName1>.url=
-    % # Update interval for first cache item
-    %# http:<cacheItemName1>.updateInterval=
-    
-    % # URL of the second cache item
-    % # http:<cacheItemName2>.url=
-    % # Update interval for second cache item
-    % # http:<cacheItemName2>.updateInterval=
+    ############################### HTTP Binding ##########################################
+    # URL of the first cache item
+    # http:<cacheItemName1>.url=
+    # Update interval for first cache item
+    # http:<cacheItemName1>.updateInterval=
 
+    # URL of the second cache item
+    # http:<cacheItemName2>.url=
+    # Update interval for second cache item
+    # http:<cacheItemName2>.updateInterval=
