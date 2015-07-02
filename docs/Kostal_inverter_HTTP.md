@@ -2,7 +2,7 @@ Anbindung Kostal Wechselrichter mit dem HTTP Binding
 ====================================================
 
 Das folgende Beispiel zeigt die Anbindung eines Kostal Piko
-Wechselrichter mit Hilfe des HTTP Binding. Damit alle visualisierten Werte dem gleichen Zeitpunkt entsprechen, wird in diesem Beispiel die Caching Funktion des HTTP Binding verwendet. Eine [englische Version](https://github.com/openhab/openhab/wiki/Samples-Binding-Config#how-to-get-data-from-kostal-piko-solar-inverter-via-http-binding) dieses des Beispiels, ist im  openHAB Wiki zu finden.  
+Wechselrichter mit Hilfe des HTTP Binding. Damit alle visualisierten Werte dem gleichen Zeitpunkt entsprechen, wird in diesem Beispiel die Caching Funktion des HTTP Binding verwendet. Eine [englische Version](https://github.com/openhab/openhab/wiki/Samples-Binding-Config#how-to-get-data-from-kostal-piko-solar-inverter-via-http-binding) dieses Beispiels ist im  openHAB Wiki zu finden.  
 
 ![Ausgabe der Kostal Wechselrichter](images/kostal_solar_inverter.png "HTTP Ausgabe des Kostal Wechselrichter")
 

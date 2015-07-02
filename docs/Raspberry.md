@@ -1,9 +1,9 @@
 OpenHAB auf dem dem Raspberry PI
 ================================
 
-Die folgenden Kapitel wird die Installation und Verwendung von [Raspbian](www.raspbian.org "Raspbian.org Homepage")
+Die folgenden Kapitel werden die Installation und Verwendung von [Raspbian](www.raspbian.org "Raspbian.org Homepage")
 auf dem [Raspberry PI](http://www.raspberrypi.org/ "Raspberry PI Homepage") sowie die Nutzung von openHAB auf diesem System
-erklärt. Prinzipiell können für die Nutzung von openHAB auf dem
+erklären. Prinzipiell können für die Nutzung von openHAB auf dem
 Raspberry PI auch andere Betriebssysteme verwendet werden. Im Folgenden
 beschränke ich mich auf Raspbian. Hierbei handelt es sich wie bei den
 meisten Linux Systemen um ein offenes Betriebssystem. Raspbian wurde
@@ -50,15 +50,15 @@ Diese muss nur durchgeführt werden, wenn eine leere SD Karte vorliegt auf die d
       Um dd verwenden zu können, muss zuerst der Gerätepfad (hier /dev/sdd) für die SD Karte ausfindig gemacht werden!
       1. `df -h` ausführen ohne gestekte SD Karte
       2. SD Karte in Lesegerät stecken
-      3. `df -h` erneut ausführen die SD Karte sollte nun Beispielsweise wie folgt aufgeistet sein `/dev/mmcblk0pl` oder `/dev/sdd1`
+      3. `df -h` erneut ausführen die SD Karte sollte nun Beispielsweise wie folgt aufgelistet sein `/dev/mmcblk0pl` oder `/dev/sdd1`
       4. `dd bs=4M if=<Pfad zum Image>/2014-12-24-wheezy-raspbian.img of=/dev/sdd` kopiert das Image auf die SD Karte  
       In manchen Fällen ist das Aufspielen des Images mit dem Parameter bs=4M fehlerhaft, in diesem Fall das Ganze nochmals mit bs=1M testen.
 - Nach dem Aufspielen des Image auf die SD-Karte, diese in den Raspberry einstecken und am TV oder Monitor sowie die Tastatur und Maus 
   anschließen. Beim ersten Start wird ein Konfigurationstool gestartet.  
   ![Raspbian Konfigurationstool](images/raspi-config.png "Konfigurationstool für Raspbian")
   Sollte dies nicht der Fall sein, kann das Konfigurationstool mit folgenden Befehl gestartet werden:  
-  ´sudo raspi-config Im Konfigurationstool sollten´
-  folgende Punkte im Konfigurationstool nacheinander durchführen:
+  ´sudo raspi-config´ 
+  Im Konfigurationstool folgende Punkte nacheinander durchführen:
   1. Advanced Options --> ssh (ggf. bei neueren Version nicht mehr Notwendig)
   2. Change User Password
   3. Internationalisation Options (Sprache und Tastaturlayout)
@@ -75,28 +75,30 @@ Diese muss nur durchgeführt werden, wenn eine leere SD Karte vorliegt auf die d
 Installation des Midnight Commander (mc)
 ----------------------------------------
 
-Nach erfolgreicher Installation von Linux sollten das Hilfreiche
-Programm mc nicht fehlen.Damit der Midnight Commander installiert wird,
-nach dem hochfahren und anmelden folgenden Befehl ausführen: sudo
-apt-get install mc Danach wird man aufgefordert, das root-Passwort
+Nach erfolgreicher Installation von Linux sollte das sehr hilfreiche
+Programm ´mc´ nicht fehlen. Damit der Midnight Commander installiert wird,
+nach dem Hochfahren und Anmelden folgenden Befehl ausführen: 
+´sudo apt-get install mc´ 
+Danach wird man aufgefordert, das root-Passwort
 einzugeben, dies ist das gleiche wie für den user pi. Nach Installation
-kann das Programm mc wie folgt aufgerufen werden: mc (ohne root Rechte)
-oder sudo mc (mit root Rechte)  
+kann das Programm mc wie folgt aufgerufen werden: ´mc´ (ohne root Rechte)
+oder ´sudo mc´ (mit root Rechte)  
 ![Midnight Commander](images/mc_home.png "Midnight Commander")
 
 Statische IP-Adressen einrichten
 --------------------------------
 
-Standardmäßig läuft die Netzwerkkarten mit DHCP. Möchte man einem der
-Netzwerk Schnittstellen eine eine feste IP-Adresse zuweisen, muss unter
-Linux die Datei /etc/network/interface angepasst werden. Die Datei
+Standardmäßig läuft die Netzwerkkarte mit DHCP. Möchte man der
+Netzwerk-Schnittstelle eine feste IP-Adresse zuweisen, muss unter
+Linux die Datei ´/etc/network/interface´ angepasst werden. Die Datei
 selbst kann allerdings nur von root angepasst werden. Um die Datei
 anzupassen, wie folgt vorgehen:
 
-1.  Wechseln in das entsprechende Verzeichnis cd /etc/network
+1.  Wechseln in das entsprechende Verzeichnis
+    ´cd /etc/network´
 
 2.  Starten des Midnight Commander und öffnen der Datei interface  
-    `sudo mc`
+    ´sudo mc´
 
 3.  Standardmäßig sollte folgendes drin stehen:  
     ![Inhalt der Datei interface](images/mc_network.png "Inhalt der Datei interface")
@@ -118,10 +120,10 @@ Java Installieren
 Seit kurzen hat sich die Java-Installation deutlich vereinfacht. Die
 passenden hard-float oder soft-float Java Variante muss nicht von Oracle
 heruntergeladen und über mehrere Schritte installiert werden. Raspbian
-bringt nun die passende Java Version die auch hard-float unterstützt mit
+bringt nun die passende und hard-float unterstützende Java Version mit
 und kann einfach mit folgenden Befehl installiert werden.  
-    sudo apt-get update
-    sudo apt-get install oracle-java7-jdk
+    ´sudo apt-get update´
+    ´sudo apt-get install oracle-java7-jdk´
 
 openHAB auf dem Raspberry Einrichten
 ------------------------------------

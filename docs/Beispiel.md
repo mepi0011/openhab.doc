@@ -1,7 +1,7 @@
 Erste Schritte mit openHAB
 ==========================
 
-Die grundlegende Funktionsweise von openHAB, wird im Folgenden an Hand eines kleines Beispieles Schritt für Schritt erklärt.
+Die grundlegende Funktionsweise von openHAB, wird in den folgenden Abschnitten an Hand eines kleines Beispieles Schritt für Schritt erklärt.
 Der [Code](https://github.com/mepi0011/openhab.doc/raw/master/examples/house.zip "Souce Code für Beispielhaus ohne KNX Erweiterung") für dieses Beispiel kann heruntergeladen werden.
 Für das Beispiel wird eine Gebäudestruktur eines Einfamilienhauses verwendet, das aus zwei Stockwerken und 12 Räumen besteht [siehe Abbildung [Grundriss]].
 Mit Hilfe der Gebäudestruktur wird im folgenden der Aufbau von Items, Gruppen und der Sitemap veranschaulicht.
@@ -71,7 +71,7 @@ folgendes in die Datei Haus.items ein:
 Die beiden Gruppen bestehen aus dem Schlüsselwort Group und ihrem Namen. Mehr wird hierfür aktuell nicht benötigt.
 
 Wie in Programmiersprachen auch, kennt openHAB Kommentare. Diese können
-durch // für eine Zeile bzw. für mehrere Zeilen durch \\\* am Anfang und
+durch // für eine Zeile bzw. für mehrere Zeilen durch /\* am Anfang und
 \*/ am Ende eingeleitet werden.
 
 Nun müssen noch die Räume definiert werden. Zuvor wird für jeden Raum eine Gruppe definiert, in die die eigentlichen Items (Schalter, Sensoren und Aktoren) zugeordnet werden.
@@ -101,17 +101,17 @@ und Dimmer und fügen folgendes in die Items-Datei ein:
     Switch Licht_OG_Kinderzimmer1	"Licht Kinderzimmer1"	(OG_Kinderzimmer1)
     Switch Licht_OG_Kinderzimmer2	"Licht Kinderzimmer2"	(OG_Kinderzimmer2)
     Switch Licht_OG_Bad_Spiegel		"Licht Spiegelschrank"	(OG_Bad)
-    Switch Licht_OG_Flur		"Licht Flur/Treppe OG"	(OG_Flur)
-    Switch Licht_EG_Kueche		"Licht Kueche"		(EG_Kueche)
-    Switch Licht_EG_Esszimmer		"Licht Esszimmer"	(EG_Esszimmer)
-    Switch Licht_EG_WC			"Licht WC"		(EG_WC)
-    Switch Licht_EG_Abstellraum		"Licht Abstellraum"	(EG_Abstellraum)
-    Switch Licht_EG_Flur		"Licht Flur/Treppe EG"	(EG_Flur)
+    Switch Licht_OG_Flur			"Licht Flur/Treppe OG"	(OG_Flur)
+    Switch Licht_EG_Kueche			"Licht Kueche"			(EG_Kueche)
+    Switch Licht_EG_Esszimmer		"Licht Esszimmer"		(EG_Esszimmer)
+    Switch Licht_EG_WC				"Licht WC"				(EG_WC)
+    Switch Licht_EG_Abstellraum		"Licht Abstellraum"		(EG_Abstellraum)
+    Switch Licht_EG_Flur			"Licht Flur/Treppe EG"	(EG_Flur)
 
     /*Dimmer*/
     Dimmer Licht_OG_Schlafzimmer	"Licht Schlafzimmer"	(OG_Schlafzimmer)
-    Dimmer Licht_OG_Bad			"Licht Bad"		(OG_Bad)
-    Dimmer Licht_EG_Wohnzimmer		"Licht Wohnzimmer"	(EG_Wohnzimmer)
+    Dimmer Licht_OG_Bad				"Licht Bad"				(OG_Bad)
+    Dimmer Licht_EG_Wohnzimmer		"Licht Wohnzimmer"		(EG_Wohnzimmer)
 
 Auch hier ist der Aufbau der Items gleich, sie bestehen bestehen aus den
 Komponenten Funktion, Name, Text und Gruppe. In diesem Beispiel wurden
@@ -129,61 +129,61 @@ Die komplette Item-Datei sollte nun wie folgt aussehen:
     Group OG_Schlafzimmer	"Schlafzimmer"	<bedroom>	(gOG)
     Group OG_Kinderzimmer1	"Kinderzimmer1"	<boy1>		(gOG)
     Group OG_Kinderzimmer2	"Kinderzimmer2"	<child2>	(gOG)
-    Group OG_Bad		"Bad"		<bath>		(gOG)
-    Group OG_Flur		"Flur OG"			(gOG)
+    Group OG_Bad			"Bad"			<bath>		(gOG)
+    Group OG_Flur			"Flur OG"					(gOG)
 
-    Group EG_Kueche		"Kueche" 	<kitchen>	(gEG)
+    Group EG_Kueche			"Kueche" 		<kitchen>	(gEG)
     Group EG_Esszimmer		"Esszimmer" 	<child1> 	(gEG)
-    Group EG_WC			"WC"		<bath>		(gEG)
+    Group EG_WC				"WC"			<bath>		(gEG)
     Group EG_Wohnzimmer		"Wohnzimmer"	<sofa>		(gEG)
     Group EG_Abstellraum	"Abstellraum"	<wardrobe2>	(gEG)
-    Group EG_Flur		"Flur EG"			(gEG)
+    Group EG_Flur			"Flur EG"					(gEG)
 
     /*Licht*/
     Switch Licht_OG_Kinderzimmer1	"Licht Kinderzimmer1"	(OG_Kinderzimmer1)
     Switch Licht_OG_Kinderzimmer2	"Licht Kinderzimmer2"	(OG_Kinderzimmer2)
     Switch Licht_OG_Bad_Spiegel		"Licht Spiegelschrank"	(OG_Bad)
-    Switch Licht_OG_Flur		"Licht Flur/Treppe OG"	(OG_Flur)
-    Switch Licht_EG_Kueche		"Licht Kueche"		(EG_Kueche)
-    Switch Licht_EG_Esszimmer		"Licht Esszimmer"	(EG_Esszimmer)
-    Switch Licht_EG_WC			"Licht WC"		(EG_WC)
-    Switch Licht_EG_Abstellraum		"Licht Abstellraum"	(EG_Abstellraum)
-    Switch Licht_EG_Flur		"Licht Flur/Treppe EG"	(EG_Flur)
+    Switch Licht_OG_Flur			"Licht Flur/Treppe OG"	(OG_Flur)
+    Switch Licht_EG_Kueche			"Licht Kueche"			(EG_Kueche)
+    Switch Licht_EG_Esszimmer		"Licht Esszimmer"		(EG_Esszimmer)
+    Switch Licht_EG_WC				"Licht WC"				(EG_WC)
+    Switch Licht_EG_Abstellraum		"Licht Abstellraum"		(EG_Abstellraum)
+    Switch Licht_EG_Flur			"Licht Flur/Treppe EG"	(EG_Flur)
 
     /*Dimmer*/
     Dimmer Licht_OG_Schlafzimmer	"Licht Schlafzimmer"	(OG_Schlafzimmer)
-    Dimmer Licht_OG_Bad			"Licht Bad"		(OG_Bad)
-    Dimmer Licht_EG_Wohnzimmer		"Licht Wohnzimmer"	(EG_Wohnzimmer)
+    Dimmer Licht_OG_Bad				"Licht Bad"				(OG_Bad)
+    Dimmer Licht_EG_Wohnzimmer		"Licht Wohnzimmer"		(EG_Wohnzimmer)
 
 Damit das Beispiel noch lauffähig wird, benötigt openHAB noch die
 Sitemap-Datei. In ihr wird der Aufbau der Weboberfläche definiert. Im
 Ordner sitemaps wird eine Datei Haus.Sitemap angelegt und folgendes
 eingetragen.
 
-    sitemap Haus label="Hauptmenue"
-    {
-     Frame {
-            Group item=gOG	label="Obergeschoss"	icon="firstfloor"
-            Group item=gEG	label="Erdgeschoss"	icon="groundfloor"
-           }
-    }
+	sitemap Haus label="Hauptmenue"
+	{
+		Frame {
+			Group item=gOG label="Obergeschoss" icon="firstfloor"
+			Group item=gEG label="Erdgeschoss"	icon="groundfloor"
+		}
+	}
 
 Nachdem nun die drei wichtigsten Dateien angelegt wurden, kann das
 Beispiel gestartet werden. Hierzu öffnen wir die Konsole (Linux) bzw.
 die Dos-Box (Windows) und wechseln mit dem Befehl  
-` cd <Pfad\_zu\_openHAB\>/runtime (Linux) `  
+´cd <Pfad\_zu\_openHAB\>/runtime´ (Linux)
 oder  
-` dir <Pfad\_zu\_openHAB\>\runtime (Windows) `  
+´dir <Pfad\_zu\_openHAB\>\runtime´ (Windows)
 in das Verzeichnis von openHAB.  
 Anschließend wird openHAB mit einem der folgenden Befehl gestartet.  
-` ./start.sh (Linux) `  
+´./start.sh´ (Linux)
 oder  
-` start.bat (Windows) `  
+´start.bat´ (Windows)
 
 Nach erfolgreichem Start öffnen wir einen Browser und geben folgendes
 ein:
-http://localhost:8080/openhab.app?sitemap=Haus\#
-Bei manchen Browsern (z.B. Firefox) gibt es Probleme mit der Darstelung. Als Browser kann Chronium bzw. Chrome empfohlen werden.
+´http://localhost:8080/openhab.app?sitemap=Haus\#´
+Bei manchen Browsern (z. B. Firefox) gibt es Probleme mit der Darstellung. Als Browser kann Chronium bzw. Chrome empfohlen werden.
 Das Ergebnis des ersten Beispiels sieht wie folgt aus:
 
 ![openHAB Ausgabe: Hauptmenü des Beispielhaus](images/Haus_Hauptmenue_klein.png "Hauptmenü des Beispielhaus")
@@ -203,6 +203,6 @@ Contact Item
 ------------
 Mit Hilfe des Contact-Item können die Zustände offen und geschlossen angezeigt werden, vorzugsweise für Fenster- oder Türkontakte.
 
-Im Beispiel ergänzen wir nun in der Items-Datei Haus.items folgene Zeilen um z.B. den Status des Küchenfenster sowie der Haustür abzufragen.
+Im Beispiel ergänzen wir nun in der Items-Datei Haus.items folgene Zeilen um z. B. den Status des Küchenfenster sowie der Haustür abzufragen.
 
 Code und Bild müssen noch eingefügt werden!

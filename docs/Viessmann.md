@@ -4,8 +4,8 @@ Steuerung von Viessmann Heizungen
 Installation der Software vcontrold und vclien
 ----------------------------------------------
 
-Mit Hilfe des Projektes openv und dem Daemon Vcontrold ist es möglich
-Viessmann Heizungen auszulesen und steuern. Die Folgende Dokumentation
+Mit Hilfe des Projektes openv und dem Daemon Vcontrold ist es möglich,
+Viessmann Heizungen auszulesen und steuern. Die folgende Dokumentation
 ist zum Teil von der Homepage des openv Projektes entnommen (siehe
 http://openv.wikispaces.com)
 
@@ -13,31 +13,31 @@ http://openv.wikispaces.com)
     auf dem Raspbian-System die Pakete subversion, build-essential,
     libxml2-dev, automake und autoconf installiert werden. Die
     Installation geschieht mit folgendem Befehl:  
-        sudo apt-get install subversion build-essential libxml2-dev automake autoconf
+        ´sudo apt-get install subversion build-essential libxml2-dev automake autoconf´
 
 2.  Bevor der Quellcode von Vcontrold heruntergeladen werden kann, muss
     ein Ordner angelegt werden. Hier im Beispiel ist es der Unterordner “vcontrold” im aktuellen Verzeichniss  
-        mkdir vcontrold
+        ´mkdir vcontrold´
 
 3.  Herunterladen der Sourcen erfolgt schließlich mit  
-        svn checkout svn://svn.code.sf.net/p/vcontrold/code/ vcontrold
+        ´svn checkout svn://svn.code.sf.net/p/vcontrold/code/ vcontrold´
 
 4.  In das Verzeichnis mit den Sourchen wechseln  
-        cd vcontrold/vcontrold
+        ´cd vcontrold/vcontrold´
 
 5.  Die Datei auto-build.sh ausführbar machen  
-        chmod +x auto-build.sh
+        ´chmod +x auto-build.sh´
 
 6.  Nacheinander folgendes ausführen  
-        ./auto-build.sh
-        ./configure
+        ´./auto-build.sh´
+        ´./configure´
 
 7.  Wenn beides ohne Fehler gelaufen ist, noch folgenden Befehl
     ausführen um das ausführbaren Programme zu erstellen  
-        make
+        ´make´
 
 8.  Die Installation wird abgeschlossen durch folgende Befehle  
-        sudo make install
+        ´sudo make install´
 
 vcontrold einrichten und testen
 -------------------------------

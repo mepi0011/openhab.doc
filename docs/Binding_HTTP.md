@@ -1,7 +1,7 @@
 HTTP Binding
 ============
 
-Das HTTP Binding ist wie z.B. das KNX Binding als extra Modul im
+Das HTTP Binding ist wie z. B. das KNX Binding als extra Modul im
 Zip-File Addons enthalten. Um mit openHAB Anfragen an eine URL zu senden
 wenn bestimmte Ereignisse erfolgen oder um zyklisch Daten einer URL
 abzufragen, muss das HTTP Binding in das Verzeichnis
