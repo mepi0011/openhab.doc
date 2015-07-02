@@ -37,7 +37,7 @@ Man stellt hier eine Soll-Temperatur ein und simuliert eine Ist-Temperatur:
             Setpoint item=Wassertemperatur_Soll_Setpoint label="Wassertemperatur Soll [%.1f °C]" step=0.5 minValue=1 maxValue=30
             Setpoint item=Wassertemperatur_Ist_Simulation label="Wassertemperatur Ist [%.1f °C]" step=0.1 minValue=4 maxValue=7
             Switch item=Heizung_Switch label="Heizung"
-            }
+        }
     }
 
 ### Items

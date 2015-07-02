@@ -104,7 +104,7 @@ Um das Skript in openHAB zu verwenden, muss lediglich das exec Binding in das Ve
 
 ```
 Number BCM_consumption_wattage		"current wattage consumption [%.1f W]"	{exec="<[/opt/bcontrol/bcontrol@@CurrentConsumption:5000:REGEX((.*?))]"}
-Number BCM_feeding_wattage		    "current feeding wattage [%.1f W]"	    {exec="<[/opt/bcontrol/bcontrol@@CurrentFeeding:5000:REGEX((.*?))]"}
+Number BCM_feeding_wattage		"current feeding wattage [%.1f W]"	{exec="<[/opt/bcontrol/bcontrol@@CurrentFeeding:5000:REGEX((.*?))]"}
 Number BCM_energy_value_consumption	"energy value consumption [%.1f Wh]"	{exec="<[/opt/bcontrol/bcontrol@@TotalConsumption:10000:REGEX((.*?))]"}
-Number BCM_energy_value_feeding		"energy value feeding [%.1f Wh]"	    {exec="<[/opt/bcontrol/bcontrol@@TotalFeeding:10000:REGEX((.*?))]"}
+Number BCM_energy_value_feeding		"energy value feeding [%.1f Wh]"	{exec="<[/opt/bcontrol/bcontrol@@TotalFeeding:10000:REGEX((.*?))]"}
 ```
