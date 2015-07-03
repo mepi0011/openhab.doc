@@ -2,7 +2,7 @@ Autostart von openHAB einrichten
 ================================
 
 Das Linux-System auf dem Raspberry PI kann so eingerichtet werden, dass openHAB bei einem Neustart automatisch gestartet wird.
-Voraussetzung für die korrekte Funktionsweise der folgenden Anleitung, ist eine Installation von openHAB nach den schritten der vorherigen Anleitung.  Wurde openHAB nicht nach dieser Anleitung installiert, müssen die Pfade dementsprechend angepasst werden.   
+Voraussetzung für die korrekte Funktionsweise der folgenden Anleitung, ist eine Installation von openHAB nach den schritten der vorherigen Anleitung. Wurde openHAB nicht nach dieser Anleitung installiert, müssen die Pfade dementsprechend angepasst werden.   
 Damit openHAB beim Booten automatisch startet, werden die beiden Script-Dateien openhab und openhab.cfg benötigt.  
 Hierzu einfach die [Dateien](https://github.com/mepi0011/openhab.doc/raw/master/examples/autostart.zip "Script-Files für openHAB Autostart") herunterladen, entpacken und anschliesend per WINSCP oder per USB Stick auf den Paspberry PI kopieren.   
 

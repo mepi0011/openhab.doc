@@ -1,9 +1,7 @@
 Anbindung von KNX an openHAB
 ============================
 
-Im folgenden Kapitel wird erklärt wie openHAB an den KNX-Bus angebunden werden kann. Dabei wird das [Beispielhaus](#Beispiel--Visualisierung-Haus) herangezogen. Zusätzlich wird für die Kommunikation über TCP/IP zum
-KNX-Bus ein KNX/IP Gateway benötigt (z.B.: Siemens
-IP-Schnittstelle N148/22).
+Im folgenden Kapitel wird erklärt wie openHAB an den KNX-Bus angebunden werden kann. Dabei wird das [Beispielhaus](#Beispiel--Visualisierung-Haus) herangezogen. Zusätzlich wird für die Kommunikation über TCP/IP zum KNX-Bus ein KNX/IP Gateway benötigt (z.B.: Siemens IP-Schnittstelle N148/22).
 
 Vorbereitungen
 --------------
@@ -13,7 +11,7 @@ bekannt sein. Hier empfiehlt es sich eine feste IP-Adresse zu vergeben.
 Zusätzlich muss die IP-Adresse des System auf dem openHAB läuft bekannt
 sein. Dies kann der Konsole unter Windows mit ipconfig bzw. unter Linux
 mit ifconfig ermittelt werden. Nachdem die IP-Adressen bekannt sind,
-kann mit dem einrichten von openHAB begonnen werden.
+kann mit dem Einrichten von openHAB begonnen werden.
 
 Als erstes kopieren wir das Binding org.openhab.binding.knx-\*.jar in
 das Verzeichnis <Pfad_zu_openHAB>/runtime/addons. Das Herunterladen
@@ -83,7 +81,7 @@ aufgebaut.
 * * * * *
 ![Hinweis!](images/Warning.png "Hinweis! Konfiguration Bindings in der openhab.cfg")
 Wichtig ist, dass die Zeilen durch entfernen des voranstehenden Zeichen
-\# auskommentiert werden!
+\# aktiviert werden!
 
 * * * * *
 

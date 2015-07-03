@@ -10,11 +10,11 @@ OpenHAB Runtime
 Die aktuelle Version kann von der Projektseite [openhab.org](http://www.openhab.org)
 heruntergeladen und in einem beliebigen Ordner entpackt werden.  
 
-z.B.:  
+z. B.:  
 Linux: /openhab/runtime
 Windows: E:\openhab\runtime\
 
-Um die Schreibweise zu vereinheitlichen, wird in den folgenden Kapitel
+Um die Schreibweise zu vereinheitlichen, wird in den folgenden Kapiteln
 das Verzeichnis mit <Pfad\_zu\_openHAB\> ersetzt. Zum Ausführen von
 openHAB, wechseln sie in das Verzeichnis <Pfad\_zu\_openHAB\>. Abhängig
 vom verwendeten Betriebssystem führen sie eines der beiden Scripte aus.
@@ -55,4 +55,4 @@ verwenden, da dieser Syntaxfehler erkennt und eine Autovervollständigung
 implementiert hat. Der openHAB Designer kann auch von openHAB.org
 heruntergeladen werden, dabei ist auf die Betriebssystemversion zu
 achten. Nach dem Download den Designer in einem beliebigen Ordner
-entpacken (z.B.: Linux: /openHAB/designer).
+entpacken (z. B.: Linux: /openHAB/designer).

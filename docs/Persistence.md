@@ -4,14 +4,14 @@ Persistence
 Mit den verschiedenen Arten von Persistence die openHAB bietet, besteht
 die Möglichkeit den Status der Items in Datenbanken oder Log-Dateien zu
 speichern. Die gespeicherten Werte lassen sich in openHab oder externen
-Tools weiterverarbeiten. Es besteht die Möglichkeit, z.B. in Rules,
-auf die von der Persistence gespeicherten Daten zuzugreifen, um z.B.
+Tools weiterverarbeiten. Es besteht die Möglichkeit, z. B. in Rules,
+auf die von der Persistence gespeicherten Daten zuzugreifen, um z. B.
 historische Daten die eine Woche zurückliegen anzuzeigen. Zusätzlich
 kann auf einfache Weise beim Neustart von openHab der letzte Wert des Items aus
 der Datenbank ausgelesen und dem jeweiligen Items zugewiesen werden.
 
 Die verschiedenen Persistences können parallel betrieben werden, so ist
-es möglich das gleiche Item in mehreren Persistences zu speichern.
+es möglich, das gleiche Item in mehreren Persistences zu speichern.
 
 Aktuell bietet openHAB folgende Datenbanken an:
 
@@ -33,7 +33,7 @@ Allgemeines zu Persistence
 --------------------------
 
 Für jeden Persistence-Service der Verwendet werden soll, muss eine
-entsprechende Konfigurationsdatei <persistenceservice>.persist (z.B.
+entsprechende Konfigurationsdatei <persistenceservice>.persist (z. B.
 db4o.persist) im Verzeichnis <Pfad_zu_openHAB>/configurations/persistence angelegt werden.
 Um Fehler zu vermeiden sollten die Konfigurationsdateien mit dem openHAB
 Designer angelegt und bearbeitet werden, da dieser Autovervollständigung
@@ -93,7 +93,7 @@ ist noch das Jokerzeichen \* möglich. Hierzu siehe folgende Erklärung:
     gespeichert allerdings die nicht der Gruppen-Wert selbst.
 
 Den Items kann optional noch ein Alias hinzugefügt werden, sofern für
-den Persistence-Service ein spezifischer Namen erforderlich ist. (z.B.
+den Persistence-Service ein spezifischer Namen erforderlich ist. (z. B.
 eine Feed-ID für einen IoT-service)\
 
 Eine gültige Persistence konfigurationsdatei könnte wie folgt aussehen:
