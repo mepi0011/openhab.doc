@@ -3,17 +3,17 @@ Persistence
 
 Mit den verschiedenen Arten von Persistence die openHAB bietet, besteht
 die Möglichkeit den Status der Items in Datenbanken oder Log-Dateien zu
-speichern. Die gespeicherten Werte lassen sich in openHab oder externe
-Tools weiter zu verarbeiten. Es besteht die Möglichkeit z.B. in Rulse
-auf die von den Persistence gespeicherten Daten zuzugreifen um z.B.
+speichern. Die gespeicherten Werte lassen sich in openHab oder externen
+Tools weiterverarbeiten. Es besteht die Möglichkeit, z. B. in Rules,
+auf die von der Persistence gespeicherten Daten zuzugreifen, um z. B.
 historische Daten die eine Woche zurückliegen anzuzeigen. Zusätzlich
-kann auf einfache Weise beim Neustart von openHab der letzten Werte aus
-der Datenbank ausgelesen und dem jeweiligen Items zugewiesen werden.\
+kann auf einfache Weise beim Neustart von openHab der letzte Wert des Items aus
+der Datenbank ausgelesen und dem jeweiligen Items zugewiesen werden.
 
-Die verschiedenen Persistence können parallel betrieben werden, so ist
-es möglich das gleiche Item in mehreren Persistence zu speichern.\
+Die verschiedenen Persistences können parallel betrieben werden, so ist
+es möglich, das gleiche Item in mehreren Persistences zu speichern.
 
-Aktuell bietet openHAB folgende Datenbanke an:\
+Aktuell bietet openHAB folgende Datenbanken an:
 
 -   **db4o** - eine leichtgewichtige 100% Java Datenbank
 
@@ -33,16 +33,16 @@ Allgemeines zu Persistence
 --------------------------
 
 Für jeden Persistence-Service der Verwendet werden soll, muss eine
-entsprechende Konfigurationsdatei <persistenceservice>.persist (z.B.
+entsprechende Konfigurationsdatei <persistenceservice>.persist (z. B.
 db4o.persist) im Verzeichnis <Pfad_zu_openHAB>/configurations/persistence angelegt werden.
 Um Fehler zu vermeiden sollten die Konfigurationsdateien mit dem openHAB
 Designer angelegt und bearbeitet werden, da dieser Autovervollständigung
-und Syntax-Checks bietet.   
+und Syntax-Checks bietet.
 
 Das Konzept der Konfigurationsdatei ist, openHAB möglichst einfach zu
 sagen welche Items gespeichert wann gespeichert werden sollen. Die
 Konfigurationsdatei untergliedert sich in die zwei Sektionen Strategies
-und Items.   
+und Items.
 
 Die Strategies Sektion ermöglicht das definieren der Zeitpunkte an denen
 die Items für dieses Persistence gespeichert werden. Der Syntax ist wie
@@ -93,7 +93,7 @@ ist noch das Jokerzeichen \* möglich. Hierzu siehe folgende Erklärung:
     gespeichert allerdings die nicht der Gruppen-Wert selbst.
 
 Den Items kann optional noch ein Alias hinzugefügt werden, sofern für
-den Persistence-Service ein spezifischer Namen erforderlich ist. (z.B.
+den Persistence-Service ein spezifischer Namen erforderlich ist. (z. B.
 eine Feed-ID für einen IoT-service)\
 
 Eine gültige Persistence konfigurationsdatei könnte wie folgt aussehen:
@@ -108,7 +108,7 @@ Eine gültige Persistence konfigurationsdatei könnte wie folgt aussehen:
         default = everyChange
     }
 
-    /* 
+    /*
      * Each line in this section defines for which item(s) which strategy(ies)
      * should be applied. You can list single items, use "*" for all items or
      * "groupitem*" for all members of a group item (excl. the group item itself).

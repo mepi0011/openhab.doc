@@ -1,9 +1,9 @@
 Setpoint
 ========
 
-Mit Setpoint kann man in vordefinierten Schritten einen (zB virtuellen Soll-)Wert einstellen.
-Diesen kann man dann in den Regeln benutzen um zB zu entscheiden, ob eine Pumpe oder Heizung anspringen soll.
-Man könnte sich auch vorstellen das Öffnungsverhältnis eines Schiebers, Kugelhahns, oder Rollladens zu steuern.
+Mit Setpoint kann man in vordefinierten Schritten einen (z. B. virtuellen Soll-)Wert einstellen.
+Diesen kann man dann in den Regeln benutzen um z. B. zu entscheiden, ob eine Pumpe oder Heizung anspringen soll.
+Man könnte sich auch vorstellen, das Öffnungsverhältnis eines Schiebers, Kugelhahns oder Rollladens zu steuern.
 In diesem Fall muss dann allerdings statt (wie in dem Beispiel) "postUpdate" ein "sendCommand" verwenden.
 
 In der Datei <MyItemFile>.items legt man die zu definierende Variable an:
@@ -12,11 +12,11 @@ In der Datei <MyItemFile>.items legt man die zu definierende Variable an:
 In der Sitemap sieht es dann so aus:
     Setpoint item=Wassertemperatur_Soll_Setpoint label="Wassertemperatur Soll [%.1f °C]" step=0.5 minValue=1 maxValue=30
 
-Dort wird die Schrittweite (hier 0.5), sowie der minimale bzw maximale Wert und die Formatierung für die Anzeige des Textes
+Dort wird die Schrittweite (hier 0.5), sowie der minimale bzw. maximale Wert und die Formatierung für die Anzeige des Textes
 auf der Seite festgelegt (in diesem Fall eine Nachkommastelle mit den folgenden Zeichen für Grad Celsius).
 
 In der Datei <MyRulesFile.rules> kann dann mit z. B. if(Wassertemperatur<Wassertemperatur_Soll_Setpoint){Heizung_Ein...}else{Heizung_Aus...}
-abfragen und entsprechend handeln (ist jetzt nur ein primitives Beispiel, eigentlich würde man da einen PID-Regler-Code verwenden - z. B. Arbeit für einen Arduino,
+abfragen und entsprechend handeln (nur ein primitives Beispiel, eigentlich würde man da einen PID-Regler-Code verwenden - z. B. Arbeit für einen Arduino,
 dem man nur den Sollwert gibt und der kümmert sich dann um die Regelgeschichten um openHAB zu entlasten).
 Die (virtuelle) Variable muss aber initialisiert werden wenn sie nicht durch
 z. B. einen Sensorwert den Ihren erhält (durch Persistenzdienst oder wenn es nicht klappt, warum auch immer, manuell), sonst funktioniert es bei einem Neustart nicht und man hat statt einer Zahl nur ein Minuszeichen, welches man nicht ändern kann.
@@ -37,7 +37,7 @@ Man stellt hier eine Soll-Temperatur ein und simuliert eine Ist-Temperatur:
             Setpoint item=Wassertemperatur_Soll_Setpoint label="Wassertemperatur Soll [%.1f °C]" step=0.5 minValue=1 maxValue=30
             Setpoint item=Wassertemperatur_Ist_Simulation label="Wassertemperatur Ist [%.1f °C]" step=0.1 minValue=4 maxValue=7
             Switch item=Heizung_Switch label="Heizung"
-            }
+        }
     }
 
 ### Items
