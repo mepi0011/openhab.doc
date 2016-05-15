@@ -87,22 +87,27 @@ oder sudo mc (mit root Rechte)
 Statische IP-Adressen einrichten
 --------------------------------
 
-Standardmäßig läuft die Netzwerkkarten mit DHCP. Möchte man einem der
+Standardmäßig läuft die Netzwerkkarten mit DHCP. Möchte man einer der
 Netzwerk Schnittstellen eine eine feste IP-Adresse zuweisen, muss unter
-Linux die Datei /etc/network/interface angepasst werden. Die Datei
-selbst kann allerdings nur von root angepasst werden. Um die Datei
-anzupassen, wie folgt vorgehen:
+Linux entweder die Datei /etc/network/interfaces oder /etc/dhcpcd.conf angepasst werden.
+Der folgende Abschnitt beschreibt die beiden Möglichkeiten.  
+
+**Anpassen der Datei "/etc/networks/interfaces"**  
+*(Ältere Linux Distributionen z. B. Raspbian Wheezy oder Debia Wheety)*  
+
+Die Datei selbst kann nur von root angepasst werden.  
+Um die Datei anzupassen, wie folgt vorgehen:
 
 1.  Wechseln in das entsprechende Verzeichnis cd /etc/network
 
-2.  Starten des Midnight Commander und öffnen der Datei interface  
+2.  Starten des Midnight Commander und öffnen der Datei interfaces  
     `sudo mc`
 
 3.  Standardmäßig sollte folgendes drin stehen:  
-    ![Inhalt der Datei interface](images/mc_network.png "Inhalt der Datei interface")
+    ![Inhalt der Datei interfaces](images/mc_network.png "Inhalt der Datei interfaces")
 
 4.  Zum einrichten der festen IP Adresse, muss der Block für eth0 wie folgt geändert werden:  
-    ![Inhalt der Datei interface mit fester IP-Adresse](images/mc_network_ip.png "Inhalt der Datei interface mit fester IP-Adresse")
+    ![Inhalt der Datei interfaces mit fester IP-Adresse](images/mc_network_ip.png "Inhalt der Datei interfaces mit fester IP-Adresse")
     Erklärung:  
     static - Definition für feste IP-Adresse  
     address - Die IP-Adresse für das Interface  
@@ -111,6 +116,41 @@ anzupassen, wie folgt vorgehen:
     gateway - Das Gateway für Zieladressen die nicht im Lokalen Netz liegen
 
 Quelle: http://juliusbeckmann.de/blog/statische-ip-adressen-in-debian-und-konsorten-einrichten.html
+
+**Anpassen der Datei "/etc/dhcpcd.conf"**  
+*(Neuere Linux Distributionen z. B. Raspbian Jessy)*  
+
+Diese Dateien können  nur von root geändert werden, daher ist darauf zu achten, das vor dem Befehle sud vorangestellt wird.  
+Zum einstellen der statischen IPv4 wie folgt vorgehen:  
+
+1.  Prüfen ob das verwendete System systemd verwendet  
+    `cat /proc/1/comm`  
+    Wird *systemd* zurückgemeldet, können sie Fortfahren. Wird etwas anderes ausgegeben, kann vermutlich die Datei */etc/network/interfaces* direkt bearbeitet werden, siehe hierzu den Anschnitt */etc/network/interfaces*  
+
+2.  In das Verzeichnis cd /etc/network wechseln
+
+3.  Starten des Midnight Commander und öffnen der Datei dhcpcd.conf  
+    `sudo mc`
+
+4.  Am Ende der Datei folgenden Text anhängen:  
+    ![Inhalt der Datei dhcpcd.conf](images/Aenderung_dhcpcd-conf.png "Inhalt der Datei dhcpcd.conf")  
+    Erklärung:  
+    interface eth0 - Netzwerkschnitstelle die angepasst wird  
+    static ip_address=192.168.1.2/24 - Die IP-Adresse für das Interface, die 24 ist eine Kodierung für die Subnetzmaske 255.255.255.0  
+    static routers=192.168.1.1 - Die IP- Adresse für das Gateway  
+    static domain_name_servers=192.168.1.1 - Die IP-Adresse für den DNS Server, meist gleich wie IP-Adresse des Gateway  
+
+
+5.  Netzwerkkonfiguration neu starten (alternativ kann das System neu gestartet werden)  
+    `sudo service networking restart`
+
+6.  Überprüfen des Netzwerkstatus  
+    `sudo service dhcpcd status`  
+    Zeigt die Ausgabe noch wie im Beispiel unten eine Warnung, so muss noch der Befehl `sudo systemctl deamon-reload` ausgeführt werden  
+    ![Ausgabe von sudo service dhcpcd status](images/Aenderung_dhcpcd-conf_Fehler.png "Ausgabe von sudo service dhcpcd status")
+
+Quelle: https://www.elektronik-kompendium.de/sites/raspberry-pi/1912151.html
+
 
 Java Installieren
 -----------------
