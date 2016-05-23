@@ -74,12 +74,12 @@ Um den Autostart einzurichten, müssen auf dem Raspberry noch folgende Schritte 
    `-rwxr-xr-x 1 root root 1757 Apr 16 23:27 openhab`
 
 5. Sind die Schritte 1-4 erfolgt, kann mit folgenden Befehlen openHAB gestartet und beendet werden:  
-   ´sudo service openhab start´ gestartet  
-   ´sudo service openhab stop´ gestoppt und mit  
-   'sudo service openhab status´ der Status abgefragt werden
+   `sudo service openhab start` gestartet  
+   `sudo service openhab stop` gestoppt und mit  
+   `sudo service openhab status` der Status abgefragt werden
  
 6. Abschließend muss noch das System angewiesen werden, openhab beim booten zu starten  
-   ´sudo systemctl enable openhab.service´
+   `sudo systemctl enable openhab.service`
 
 Weiterführenden Links:
 -  https://wiki.ubuntuusers.de/Dienste/

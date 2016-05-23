@@ -5,6 +5,7 @@ pages:
 - ['Beispiel.md', 'Erste Schritte']
 - ['KNX.md', 'Anbindung an den KNX-Bus'] 
 - ['Binding_HTTP.md', 'HTTP-Binding']
+- ['Binding_milight.md', 'Milight-Binding']
 - ['Persistence.md', 'Persistence']
 - ['Raspberry.md', 'Installation auf einem Raspberry PI']
 - ['Autostart.md', 'Autostart von openHAB auf dem Raspberry PI']
