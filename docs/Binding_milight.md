@@ -1,7 +1,7 @@
 Milight Binding
 ===============
 
-Das Mi-Light Binding ist wie als extra Modul im Zip-File Addons enthalten.
+Das Mi-Light Binding ist wie alle Bindings als Modul im Zip-File Addons enthalten.
 Um mit openHAB die Mi-Light Leuchtmittel zu steuern muss das milight Binding in das Verzeichnis
 <Pfad_zu_openHAB>/addons kopiert und die openHAB Konfiguration angepasst werden. Im Folgenden wird dies detailliert erklärt.
 
@@ -12,17 +12,22 @@ Das vorliegenden Mi-Light Bundle besteht aus 4 RGB Leuchtmittel mit GU10 Fassung
 Die beigefügte Anleitung ist leider nur auf Englisch und sehr knapp gehalten. Der Aufbau der ersten Verbindung war nur mit Hilfe einer Recherche im Internet möglich.  
 Der Mi-Light WLAN Controller wird über einen Mini-USB Stecker mit 5V versorgt, beim Bundle liegt kein Netzteil bei.
 
-1  Smartphone App aus App-Store herunterladen
-2  Mi-Light WLAN Controller mit Spannung versorgen, die LED *SYS* blinkt. Der Mi-Light WLAN Controller arbeitet in den Werkseinstellungen als Access-Point
+1. Smartphone App aus App-Store herunterladen
+
+2. Mi-Light WLAN Controller mit Spannung versorgen, die LED *SYS* blinkt. Der Mi-Light WLAN Controller arbeitet in den Werkseinstellungen als Access-Point
    Ein Werksreset kann durchgeführt werden, in dem der Reset Knopf 10 Sekunden lang gedrückt wird bis die beiden LEDs *Link* und *SYS* blinken.
-3  Mit dem Smart Phone nach dem WLAN Netz *milight* suchen und verbinden. Wird das WLAN *milight* nicht gefunden, muss ein Werksreset durchgeführt werden.
-4  App starten und die Systemkonfiguration durchführen (Einbindung in eigenes WLAN).  
+
+3. Mit dem Smart Phone nach dem WLAN Netz *milight* suchen und verbinden. Wird das WLAN *milight* nicht gefunden, muss ein Werksreset durchgeführt werden.
+
+4. App starten und die Systemkonfiguration durchführen (Einbindung in eigenes WLAN).  
    ![Mi-Light Konfiguration](images/MiLight_App03.png "Mi-Light Konfiguration")
    Nach erfolgreicher Einbindung in das eigene WLAN erfolgt eine Bestätigung die mit OK bestätigt werden muss.
    ![Bestätigung der Erfolgreichen Mi-Light Konfiguration](images/MiLight_App04.png "Bestätigung der Erfolgreichen Mi-Light Konfiguration")
    Der Mi-Light Controller startet neu. Das WLAN *milight* steht nun nicht mehr zur Verfügung, es muss ins eigene WLAN gewechselt werden.
-5  Um das Leuchtmittel mit dem WLAN Controller zu verbinden, müssen diese eingebaut, ein und ausgeschaltet werden. Nach erneutem einschalten muss innerhalb von 3 Sekunden der (un)link Knopf betätigt werden. ist die Paarung erfolgreich, blinkt die Lampe 3 mal.
-6  Die Lampe kann nun über die App gesteuert werden. 
+
+5. Um das Leuchtmittel mit dem WLAN Controller zu verbinden, müssen diese eingebaut, ein und ausgeschaltet werden. Nach erneutem einschalten muss innerhalb von 3 Sekunden der (un)link Knopf betätigt werden. ist die Paarung erfolgreich, blinkt die Lampe 3 mal.
+
+6. Die Lampe kann nun über die App gesteuert werden. 
 
 
 Milight Binding Konfigurieren
