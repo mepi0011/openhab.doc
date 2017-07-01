@@ -1,0 +1,9 @@
+# generic files to ignore
+
+# Bilder
+.png
+.PNG
+.csv
+
+# except this file
+!.gitignore

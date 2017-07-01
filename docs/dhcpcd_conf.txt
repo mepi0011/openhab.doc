@@ -1,0 +1,148 @@
+pi@raspberrypi:~ $ sudo reboot                                                                                                          
+                                                                                                                                        
+Broadcast message from pi@raspberrypi on pts/0 (Di 2016-04-12 20:16:26 CEST):                                                           
+                                                                                                                                        
+The system is going down for reboot NOW!                                                                                                
+
+pi@raspberrypi:~ $ Connection to 192.168.128.169 closed by remote host.
+Connection to 192.168.128.169 closed.
+pierre@Metzner01:~$ ssh pi@192.168.128.118
+The authenticity of host '192.168.128.118 (192.168.128.118)' can't be established.
+ECDSA key fingerprint is SHA256:OwthIDlHi1YtWYpdWHqpQtwBtBtkLxYm58RCrqH4aBI.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.128.118' (ECDSA) to the list of known hosts.
+pi@192.168.128.118's password: 
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Apr 12 19:50:25 2016 from metzner01.speedport.ip
+pi@raspberrypi:~ $ ifconfig
+eth0      Link encap:Ethernet  Hardware Adresse b8:27:eb:6e:97:e9  
+          inet Adresse:192.168.128.118  Bcast:192.168.128.255  Maske:255.255.255.0
+          inet6-Adresse: fe80::d90e:9026:b190:865c/64 Gültigkeitsbereich:Verbindung
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metrik:1
+          RX packets:176 errors:0 dropped:19 overruns:0 frame:0
+          TX packets:130 errors:0 dropped:0 overruns:0 carrier:0
+          Kollisionen:0 Sendewarteschlangenlänge:1000 
+          RX bytes:15143 (14.7 KiB)  TX bytes:16410 (16.0 KiB)
+
+lo        Link encap:Lokale Schleife  
+          inet Adresse:127.0.0.1  Maske:255.0.0.0
+          inet6-Adresse: ::1/128 Gültigkeitsbereich:Maschine
+          UP LOOPBACK RUNNING  MTU:65536  Metrik:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          Kollisionen:0 Sendewarteschlangenlänge:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+pi@raspberrypi:~ $ sudo service dhcpcd status
+● dhcpcd.service - dhcpcd on all interfaces
+   Loaded: loaded (/lib/systemd/system/dhcpcd.service; enabled)
+  Drop-In: /etc/systemd/system/dhcpcd.service.d
+           └─wait.conf
+   Active: active (running) since Di 2016-04-12 20:16:31 CEST; 52s ago
+  Process: 321 ExecStart=/sbin/dhcpcd -q -w (code=exited, status=0/SUCCESS)
+ Main PID: 525 (dhcpcd)
+   CGroup: /system.slice/dhcpcd.service
+           └─525 /sbin/dhcpcd -q -w
+
+Apr 12 20:16:28 raspberrypi dhcpcd[321]: eth0: waiting for carrier
+Apr 12 20:16:30 raspberrypi dhcpcd[321]: eth0: carrier acquired
+Apr 12 20:16:30 raspberrypi dhcpcd[321]: DUID 00:01:00:01:1e:7e:76:0f:b8:27:eb:6e:97:e9
+Apr 12 20:16:30 raspberrypi dhcpcd[321]: eth0: IAID eb:6e:97:e9
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: eth0: soliciting an IPv6 router
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: eth0: using static address 192.168.128.118/24
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: eth0: adding route to 192.168.128.0/24
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: eth0: adding default route via 192.168.128.100
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: forked to background, child pid 525
+Apr 12 20:16:31 raspberrypi systemd[1]: Started dhcpcd on all interfaces.
+Apr 12 20:16:50 raspberrypi dhcpcd[525]: eth0: no IPv6 Routers available
+
+Warning: Unit file changed on disk, 'systemctl daemon-reload' recommended.
+pi@raspberrypi:~ $ systemctl daemon-reload
+Failed to execute operation: Access denied
+pi@raspberrypi:~ $ sudo systemctl daemon-reload
+pi@raspberrypi:~ $ sudo service dhcpcd status  
+● dhcpcd.service - dhcpcd on all interfaces
+   Loaded: loaded (/lib/systemd/system/dhcpcd.service; enabled)
+  Drop-In: /etc/systemd/system/dhcpcd.service.d
+           └─wait.conf
+   Active: active (running) since Di 2016-04-12 20:16:31 CEST; 2min 17s ago
+ Main PID: 525 (dhcpcd)
+   CGroup: /system.slice/dhcpcd.service
+           └─525 /sbin/dhcpcd -q -w
+
+Apr 12 20:16:28 raspberrypi dhcpcd[321]: eth0: waiting for carrier
+Apr 12 20:16:30 raspberrypi dhcpcd[321]: eth0: carrier acquired
+Apr 12 20:16:30 raspberrypi dhcpcd[321]: DUID 00:01:00:01:1e:7e:76:0f:b8:27:eb:6e:97:e9
+Apr 12 20:16:30 raspberrypi dhcpcd[321]: eth0: IAID eb:6e:97:e9
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: eth0: soliciting an IPv6 router
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: eth0: using static address 192.168.128.118/24
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: eth0: adding route to 192.168.128.0/24
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: eth0: adding default route via 192.168.128.100
+Apr 12 20:16:31 raspberrypi dhcpcd[321]: forked to background, child pid 525
+Apr 12 20:16:31 raspberrypi systemd[1]: Started dhcpcd on all interfaces.
+Apr 12 20:16:50 raspberrypi dhcpcd[525]: eth0: no IPv6 Routers available
+pi@raspberrypi:~ $ ifconfig
+eth0      Link encap:Ethernet  Hardware Adresse b8:27:eb:6e:97:e9  
+          inet Adresse:192.168.128.118  Bcast:192.168.128.255  Maske:255.255.255.0
+          inet6-Adresse: fe80::d90e:9026:b190:865c/64 Gültigkeitsbereich:Verbindung
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metrik:1
+          RX packets:646 errors:0 dropped:73 overruns:0 frame:0
+          TX packets:349 errors:0 dropped:0 overruns:0 carrier:0
+          Kollisionen:0 Sendewarteschlangenlänge:1000 
+          RX bytes:45864 (44.7 KiB)  TX bytes:43940 (42.9 KiB)
+
+lo        Link encap:Lokale Schleife  
+          inet Adresse:127.0.0.1  Maske:255.0.0.0
+          inet6-Adresse: ::1/128 Gültigkeitsbereich:Maschine
+          UP LOOPBACK RUNNING  MTU:65536  Metrik:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          Kollisionen:0 Sendewarteschlangenlänge:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+pi@raspberrypi:~ $ sudo reboot
+
+Broadcast message from pi@raspberrypi on pts/0 (Di 2016-04-12 20:19:06 CEST):
+
+The system is going down for reboot NOW!
+
+pi@raspberrypi:~ $ Connection to 192.168.128.118 closed by remote host.
+Connection to 192.168.128.118 closed.
+pierre@Metzner01:~$ ssh pi@192.168.128.118
+pi@192.168.128.118's password: 
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Apr 12 20:17:08 2016 from metzner01.speedport.ip
+pi@raspberrypi:~ $ ifconfig
+eth0      Link encap:Ethernet  Hardware Adresse b8:27:eb:6e:97:e9  
+          inet Adresse:192.168.128.118  Bcast:192.168.128.255  Maske:255.255.255.0
+          inet6-Adresse: fe80::d90e:9026:b190:865c/64 Gültigkeitsbereich:Verbindung
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metrik:1
+          RX packets:211 errors:0 dropped:42 overruns:0 frame:0
+          TX packets:97 errors:0 dropped:0 overruns:0 carrier:0
+          Kollisionen:0 Sendewarteschlangenlänge:1000 
+          RX bytes:18587 (18.1 KiB)  TX bytes:13333 (13.0 KiB)
+
+lo        Link encap:Lokale Schleife  
+          inet Adresse:127.0.0.1  Maske:255.0.0.0
+          inet6-Adresse: ::1/128 Gültigkeitsbereich:Maschine
+          UP LOOPBACK RUNNING  MTU:65536  Metrik:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          Kollisionen:0 Sendewarteschlangenlänge:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+pi@raspberrypi:~ $   
+
+
