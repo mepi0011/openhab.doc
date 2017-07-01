@@ -1,16 +1,16 @@
 site_name: openHAB Dokumentation
 pages:
-- ['index.md', 'Home']
-- ['Installation.md', 'OpenHAB Installation auf einem PC']
-- ['Beispiel.md', 'Erste Schritte']
-- ['KNX.md', 'Anbindung an den KNX-Bus'] 
-- ['Binding_HTTP.md', 'HTTP-Binding']
-- ['Binding_milight.md', 'Milight-Binding']
-- ['Persistence.md', 'Persistence']
-- ['Raspberry.md', 'Installation auf einem Raspberry PI']
-- ['Autostart.md', 'Autostart von openHAB auf dem Raspberry PI']
-- ['setpoint.md', 'Setpoint Beispiel']
-- ['Kostal_inverter_HTTP.md', 'Anbindung Kostal Wechselrichter']
-- ['B-Control_EM_example.md', 'Anbindung B-Control Manager']
-- ['Viessmann.md', 'Anbindung Viessmann Heizung']
-- ['license.md', 'Lizenzierung']
+- Home: 'index.md'
+- 'OpenHAB Installation auf einem PC': 'Installation.md'
+- Erste Schritte: 'Beispiel.md'
+- Anbindung an den KNX-Bus: 'KNX.md'
+- HTTP-Binding: 'Binding_HTTP.md'
+- Milight-Binding: 'Binding_milight.md'
+- Persistence: 'Persistence.md'
+- Installation auf einem Raspberry PI: 'Raspberry.md'
+- Autostart von openHAB auf dem Raspberry PI: 'Autostart.md'
+- Setpoint Beispiel: 'setpoint.md'
+- Anbindung Kostal Wechselrichter: 'Kostal_inverter_HTTP.md'
+- Anbindung B-Control Manager: 'B-Control_EM_example.md'
+- Anbindung Viessmann Heizung: 'Viessmann.md'
+- Lizenzierung: 'license.md'
