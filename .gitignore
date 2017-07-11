@@ -4,6 +4,7 @@
 .png
 .PNG
 .csv
+.xcf
 
 # except this file
 !.gitignore

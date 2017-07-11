@@ -129,10 +129,8 @@ Zum einstellen der statischen IPv4 wie folgt vorgehen:
     `cat /proc/1/comm`  
     Wird *systemd* zurückgemeldet, können sie Fortfahren. Wird etwas anderes ausgegeben, kann vermutlich die Datei */etc/network/interfaces* direkt bearbeitet werden, siehe hierzu den Anschnitt */etc/network/interfaces*  
 
-2.  In das Verzeichnis cd /etc/network wechseln
-
-3.  Starten des Midnight Commander und öffnen der Datei dhcpcd.conf  
-    `sudo mc`
+2.  Die Datei *dhcpcd.cond*  zum bearbeiten mit *nano* öffnen  
+    `sudo nano /etc/dhcpcd.conf`
 
 4.  Am Ende der Datei folgenden Text anhängen:  
     ![Inhalt der Datei dhcpcd.conf](images/Aenderung_dhcpcd-conf.png "Inhalt der Datei dhcpcd.conf")  
@@ -148,7 +146,7 @@ Zum einstellen der statischen IPv4 wie folgt vorgehen:
 
 6.  Überprüfen des Netzwerkstatus  
     `sudo service dhcpcd status`  
-    Zeigt die Ausgabe noch wie im Beispiel unten eine Warnung, so muss noch der Befehl `sudo systemctl deamon-reload` ausgeführt werden  
+    Zeigt die Ausgabe noch wie im Beispiel unten eine Warnung, so muss noch der Befehl `sudo systemctl daemon-reload` ausgeführt werden  
     ![Ausgabe von sudo service dhcpcd status](images/Aenderung_dhcpcd-conf_Fehler.png "Ausgabe von sudo service dhcpcd status")
 
 Quelle: https://www.elektronik-kompendium.de/sites/raspberry-pi/1912151.html
