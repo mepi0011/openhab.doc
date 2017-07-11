@@ -3,8 +3,8 @@
 # Bilder
 .png
 .PNG
-.csv
-.xcf
+*.csv
+*.xcf
 
 # except this file
 !.gitignore

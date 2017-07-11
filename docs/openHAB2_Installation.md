@@ -20,10 +20,10 @@ vom verwendeten Betriebssystem eines der beiden Scripte aus.
 Linux: start.sh  
 Windows: start.bat
 
-![Downloadseite von openHAB](images/openhab_Download.png "Downloadseite von openHAB")
+![Downloadseite von openHAB](images/openHAB2_Download.png "Downloadseite von openHAB")
 
 
-BINDING/ERweiterungen hinzufügen
+BINDING/Erweiterungen hinzufügen
 --------------------------------
 
 Für die Kommunikation mit anderen Geräten oder Funktionen sind
@@ -34,20 +34,31 @@ Nicht alle Bindings sind in der Version 2.x verfügbar, hierfür können die Bin
 Bei einer Migration von openHAB 1.x auf openHAB 2.x kann es auch notwendig sein, 
 Bindings von openHAB 1.x zu verwenden obwohl ein neues Binding verfügbar ist (z.B. das EXEC Binding, da in der neuesten Version keine Number Items unterstützt).  
 
-Am einfachsten werden die Bindings / Erweiterungen in openHAB2 mit Hilfe der PaperUI hinzugefügt.
-Nach erfolgreichem Start der openHAB2 Runtime, steht ihnen im Browser die Bedienoberfläche *PaperUI* zur Verfügung, mit ihr ist es möglich openHAB2 zu konfigurieren.  
+Am einfachsten werden die Bindings / Erweiterungen in openHAB 2 mit Hilfe der *PAPERUI* hinzugefügt.
+Nach erfolgreichem Start der openHAB2 Runtime, steht ihnen im Browser die Bedienoberfläche *PAPERUI* zur Verfügung, mit ihr ist es möglich openHAB2 zu konfigurieren.  
 
-Die *PaperUI* erreichen sie über ihren Browser und folgenden Link:
+* Die *PAPERUI* erreichen mit Hilfe des Browser (z.B. Firefox oder Chromium) und dem Link   
+ ```http://localhost:8080```  
+ (*localhost* kann auch die IP des Gerätes ersetzte werden):  
+ ![Welcome to openHAB 2](images/openHAB2_Welcome.png "Welcome to openHAB 2")    
 
+* Auswählen und starten der *PAPER UI*  
+ ![Paper UI auswählen](images/openHAB2_select_PAPERUI.png "Paper UI auswählen")    
 
-    http://localhost:8080
+* Die *Paper UI* wird gestartet, wechseln sie im linken Menü auf *Add-ons*, im orangefarbenen Feld können sie die Erweiterungen nun weiter eingrenzen. Mit der rechten Schaltfläche können sie nun Erweiterungen installieren bzw. deinstallieren.  
+ ![Erweiterungen installieren](images/openHAB2_install_Add-ons.png "Erweiterungen installieren")    
 
+* **Hinweis:** Sollte es erforderlich sein, dass openHAB 1.x Bindings verwenden werden müssen obwohl es bereits openHAB 2.x Bindings gibt, muss in der openHAB Konfiguration *Include Legacy 1.x Binding* aktiviert sein.  
+ ![Legacy 1.x Bindings in den Einstellungen aktivieren](images/openHAB2_install_Add-ons.png "Legacy 1.x Bindings in den Einstellungen aktivieren")  
+ Die Änderung muss ggf. noch gespeichert werden!  
  
+ 
+
 * * * * *
 <table>
 <tr>
 <td> ![Hinweis!](images/Warning.png "Hinweis! Konfiguration von Bindings in openHAB 2.x") </td>
-<td> Einige Bindings müssen noch konfiguriert werden. </td>
+<td> Einige Bindings müssen ggf. noch konfiguriert werden. </td>
 </tr>
 </table>
 * * * * *
