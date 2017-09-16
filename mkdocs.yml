@@ -6,6 +6,7 @@ pages:
 - Erste Schritte: 'Beispiel.md'
 - Anbindung an den KNX-Bus: 'KNX.md'
 - HTTP-Binding: 'Binding_HTTP.md'
+- HomeMatic-Binding: 'HomeMatic_YAHM.md'
 - Milight-Binding: 'Binding_milight.md'
 - Persistence: 'Persistence.md'
 - Installation auf einem Raspberry PI: 'Raspberry.md'

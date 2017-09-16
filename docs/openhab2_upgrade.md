@@ -1,7 +1,7 @@
 Upgrade auf openHAB2
 ====================
 
-Das Kapitel erklät wie schrittweise von openHAB 1.x auf openHAB 2.x aktualisiert werden kann. Die Installation von openHAB2 wird nicht explizit beschrieben, es wir davon ausgegangen dass dies auf dem Zielsystem bereits läuft.
+Das Kapitel erklär wie schrittweise von openHAB 1.x auf openHAB 2.x aktualisiert werden kann. Die Installation von openHAB2 wird nicht explizit beschrieben, es wir davon ausgegangen dass dies auf dem Zielsystem bereits läuft.
 
 
 Install Oracle Java 8 Rev > 101
