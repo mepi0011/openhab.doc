@@ -73,3 +73,63 @@ Wie Homematic IP wieder deaktiviert werden kann, ist dem [YAHM Wiki](https://git
 
 HomeMatic in openHAB einrichten
 -------------------------------
+
+Die nächsten Schritte erläutern die Installation und Konfiguration des openHAB2 HomeMatic Binding.
+Eine Alternative Anleitung zum einrichten einer CCU unter openHAB2 ist [hier](http://onesmarthome.de/smart-home-openhab-2-homematic-ccu2-installation/) zu finden.
+
+
+1. Via Browser die openHAB PaperUI aufrufen.__
+   (<openHAB-IP> mit der IP-Adresse des Raspberry oder PC ersetzen)  
+   `http://<openHAB-IP>:8080/start/index`
+
+2. In der Auswahl links *Add-ons* und anschließend im Menü oben *Bindings* wählen.  
+   Das *Homematic Binding* suchen und dies installieren.
+   ![Installation des Homematic Binding](images/Binding_install_Homematic.png "Installation des Homematic Binding via PaperUI")
+
+3. Wird YAHM verwendet, müssen die *Things* manuell angelegt werden. Hierzu in der Auswahl links *Search* und anschließend *Search THINGS* oder *+* wählen.
+   ![Manuelle Thing Suche](images/PaperUI_Search.png "Manuelle Thing Suche")
+
+4. Anschließend wird eine Liste der installierten Bindings angezeigt. Um das *Thing* anzulegen, das Homematic Binding auswählen und anschließend weiter mit *MANUALLY ADD THING*  
+   ![Homematic Thing manuell hinzufügen](images/PaperUI_Add_Homematic_Thing_Manually.png "Homematic Thing manuell hinzufügen")
+
+5. In der Liste *Homematic Bridge auswählen*  
+   ![Homematic Bridge](images/PaperUI_Add_Homematic_Bridge.png "Homematic Bridge")
+
+6. Um die Homematic Bridge zu konfigurieren, empfihlt es sich eine *Thing ID* z.B. ccu2 (1) zu vergeben. Im Feld *Gateway Addresse* (2) entspricht der IP der Homematic CCU2. Unter *Callback Network Address* (3) muss noch die IP-Adresse des openHAB 2 Server eingegeben werden. Um die Konfiguration abzuschließen, noch auf den blauen Haken (4) klicken.
+   ![Homematic Bridge konfigurieren](images/PaperUI_Homematic_Thing_Setup.png "Homematic Bridge konfigurieren")
+
+7. Wenn alles korrekt eingegeben wurde und openhAB die Bridge gefunden hat, wird die Homematic Bridge als online angezeigt (ggf. erst nach einem reboot). Zusätzlich werden neue *Things* in der *Inbox* angezeigt. Hierbei handelt es sich um zusätzliche Funktionen der CCU und die in der CCU angelernten Geräte.
+   ![Zusätzliche Funktionen und Geräte der Homematic Bridge konfigurieren](images/PaperUI_Homematic_Thing_Devices.png "Zusätzliche Funktionen und Geräte der Homematic Bridge konfigurieren")
+    
+8. Zur Inbox wechseln und *GATEWAY-EXTRAS* hinzufügen  
+   ![GATEWAY-EXTRAS hinzufügen](images/PaperUI_Homemeatic_Gateway-Extras.png "GATEWAY-EXTRAS hinzufügen")  
+   ![GATEWAY-EXTRAS hinzufügen](images/PaperUI_Homematic_confirm_Gateway-Extras.png "GATEWAY-EXTRAS hinzufügen")  
+
+9. *HM-RCV-50 BidCoS-RF* ebenfalls hinzufügen  
+   ![GATEWAY-EXTRAS hinzufügen](images/PaperUI_Homematic_HM-RCV-50_BidCoS-RF.png "GATEWAY-EXTRAS hinzufügen")  
+
+
+HomeMatic Geräte in openHAB einbinden
+-------------------------------------
+
+Nach erfolgreicher Konfiguration des HomeMatic Gateway, können nun die Geräte wie am Beispiel eines Fensterkontakt eingerichtet werden.
+
+1. Die in der Homematic Bridge ein gelernten Geräte werden in openHAB in der Inbox aufgelistet. Sollte dies nicht der Fall sein, einen Scann durchführen.
+Im folgenden Beispiel wird ein Fensterkontakt aufgelistet.  
+   ![PaperUI Inbox mit Homematic Fensterkontakt](images/PaperUI_Homematic_Contact.png "PaperUI Inbox mit Homematic Fensterkontakt")  
+
+2. Danach zu *Configuration* / *Items* wechseln um mit dem blauen Plus-Button ein neues Item hinzuzufügen.
+   ![Item hinzufügen](images/PaperUI_Item_Add.png "Item hinzufügen")  
+   
+3. Das Item entsprechend Konfigurieren z.B. siehe Bild. Die Konfiguration mit dem blauen Plus-Button abschließen.  
+   ![Item hinzufügen](images/PaperUI_Item_Setup.png "Item hinzufügen")  
+
+4. Zu *Configuration / Things* wechseln und dort den Fensterkontakt auswählen in dem z.B. der Text oder der große Runde Kreis mit dem H angeklickt wird  
+   ![Liste mit allen verfügbaren Things](images/PaperUI_Thing_List.png "Liste mit allen verfügbaren Things")  
+   
+5. Es werden nun die Channels des jeweiligen Thing angezeigt. In aktuellen Beispiel ist *State Contact* auszuwählen, da wir dieses mit einem *Contact Item* verknüpfen wollen.
+   ![Homematic Fensterkontakt Konfiguration](images/PaperUI_Thing_Homematic_Contact.png "Homematic Fensterkontakt Konfiguration")  
+   
+6. Um den *Channel* *State Contact* mit dem Item von oben zu verknüpfen den Blauen Kreis anklicken und im folgenden Fenster das Item Auswählen und bestätigen.
+   ![Homematic Fensterkontakt mit Item verknüpfen](images/PaperUI_Channel_Link.png "Homematic Fensterkontakt mit Item verknüpfen")  
+Unter *Control* ist das *Item* nun sichtbar.
