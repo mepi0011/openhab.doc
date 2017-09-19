@@ -133,3 +133,48 @@ Im folgenden Beispiel wird ein Fensterkontakt aufgelistet.
 6. Um den *Channel* *State Contact* mit dem Item von oben zu verknüpfen den Blauen Kreis anklicken und im folgenden Fenster das Item Auswählen und bestätigen.
    ![Homematic Fensterkontakt mit Item verknüpfen](images/PaperUI_Channel_Link.png "Homematic Fensterkontakt mit Item verknüpfen")  
 Unter *Control* ist das *Item* nun sichtbar.
+
+HomeMatic Geräte manuell in Item-Datei einbinden
+-------------------------------------------------
+
+Bei Verwendung der Classic- oder BasicUI muss die Item- und Sitemap-Datei manuell angelegt werden. Im folgenden wird erläuter wie ein Item Manuell angelegt wird und wie die Verknüpfung zum Homematic-Gerät hergestellt wird. 
+
+In der openHAB Dokumentation zum [Homematic Bindng](http://docs.openhab.org/addons/bindings/homematic/readme.html#items) ist folgendermaßen beschrieben:  
+
+Die Syntax zum Verknüpfen der Homematic Datenpunkte in der Itemm-Datei ist folgendermaßen aufgebaut:  
+
+`homematic:TYPE:BRIDGE:SERIAL:CHANNELNUMBER#DATAPOINTNAME`
+
+* homematic: Die ID des Homematic Binding, dieser Wert ist fix
+* type: Art des Homematic Gerät
+* bridge: Name / Bezeichnung der Homematic Bridge (CCU)
+* serial: Seriennummer des Homematic Gerätes
+* channelnumber: Kanal-Nummer des Homematic Datenpunkt
+* datapointname: Name des Homematic Datenpunkt
+
+Beispiel:
+
+    Switch  RC_1  "Remote Control Button 1" { channel="homematic:HM-RC-19-B:ccu:KEQ0099999:1#PRESS_SHORT" }
+    Dimmer  Light "Light [%d %%]"           { channel="homematic:HM-LC-Dim1T-Pl-2:ccu:JEQ0555555:1#LEVEL" }
+
+* * * * *
+<tr>
+<td> ![Hinweis!](images/Warning.png "Hinweis: HG- Typ Präfix bei Homegear Geräten") </td>
+<td> Bei Homegear Geräten nicht den Präfix HG- vergessen! </td>
+</tr>
+</table>
+* * * * *    
+
+Im Homematic WebUI unter Einstellungen Geräte kann ein Teil der benötigten Parameter ausgelesen werden.  
+
+![Homematic WebUI](images/Homematic_WebUI_setting-devices.png "Homematic WebUI")  
+
+In der Geräteübersicht kann die [1] Typenbezeichnung (type), [2] Seriennummer (serial) und der [3] Kanal (channelnumber) ausgelesen werden.  
+
+![Homematic WebUI](images/Homematic_WebUI_devices.png "Homematic WebUI")  
+
+Offen bleibt dadurch nur noch die Bezeichnung des Datenpunkt (datapointname)!  
+
+Die einfachste Art die kompletten Syntax für die Item-datei zu bekommen ist, das jeweilige Gerät per PaperUI als *Thing* einzubinden um anschließend die komplette Syntax per copy&past zu erhalten (siehe Bild). In der Konfiguration des jeweiligen Gerätes, können die Channels angezeigt und der Syntax-String per Mausklick in die Zwischenablage kopiert werden.
+
+![Kopiere Syntax für Item-Datei aus PaperUI](images/PaperUI_Thing_Homematic_Item_syntax.png "Kopiere Syntax für Item-Datei aus PaperUI")  
