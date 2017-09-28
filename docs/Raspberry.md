@@ -155,20 +155,47 @@ Quelle: https://www.elektronik-kompendium.de/sites/raspberry-pi/1912151.html
 Java Installieren
 -----------------
 
-Seit kurzen hat sich die Java-Installation deutlich vereinfacht. Die
-passenden hard-float oder soft-float Java Variante muss nicht von Oracle
-heruntergeladen und über mehrere Schritte installiert werden. Raspbian
-bringt nun die passende hard-float unterstützt Java Version mit
-und kann einfach mit folgenden Befehl installiert werden.  
-    sudo apt-get update
-    sudo apt-get install oracle-java7-jdk
+Bei den meisten Linux Distributionen ist Java bereits vorinstalliert, allerdings handelt es sich dabei nicht um das von openHAB empfohlene Oracle Java Oracle Java 8 Rev > 101. Vor der Installation von openHAB wird empfohlene die installierte Java Version zu kontrollieren und ggf. zu deinstallieren.  
 
-openHAB auf dem Raspberry Einrichten
-------------------------------------
+Bei Verwendung von Raspbian Lite ist noch kein Java installiert, was die Installation vereinfacht da nichts deinstalliert werden muss.  
 
-Die „Installation“ von openHAB auf dem Raspberry ist gleich wie auf
-einen PC. Damit später der Autostart funktioniert, wird empfohlen die
-openHAB Dateien in das Verzeichnis /opt/openhab zu kopieren. Die Daten
-mit Hilfe von WinSPC oder über einen gemounteten USB Stick und mc an die
-gewünschte Stelle kopieren.
+Um Java auf dem Raspberry zu installieren, folgende Befehle ausführen:
+
+1. Hinzufügen der Paketquellen damit Java installiert werden kann   
+  `echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | sudo tee /etc/apt/sources.list.d/webupd8team-java.list`
+  `echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | sudo tee -a /etc/apt/sources.list.d/webupd8team-java.list`
+
+2. Den Schlüssel vom Schlüssel-Server herunterladen damit der Paket-Manager die Pakete verifizieren kann  
+  `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886`
+
+3. Update der Paket-Liste durchführen  
+  `sudo apt-get update`
+
+4. Java installieren  
+  `sudo apt-get install oracle-java8-installer`  
+
+5. System neu starten damit die Änderungen wirksam werden  
+  `sudo reboot`
+
+7. Java Version überprüfen  
+  `java -version`  
+  Die Ausgabe sollte nun in etwa wie folgt aussehen:
+  ![Ausgabe von java -version](images/Ausgabe_Java_Version.png "Ausgabe von java -version")
+
+    
+Quelle: http://docs.openhab.org/installation/linux.html
+
+
+
+openHAB auf dem Raspberry installieren
+--------------------------------------
+
+Da es sich bei Raspbian um eine Debian basierte Distribution handelt, empfiehlt es sich openHAB2 über die Paketquellen zu installieren.
+Hierzu müssen dem Linux Paketmanager zuerst die Quellen hinzugefügt werden, damit die die openHAB2 Pakete installiert werden können. Ein weitere Vorteil der installation von openHAB über den Paketmanager ist, dass bei updates openHAB mit aktualisiert wird.  
+
+Hinzufügen der Quellen zum Paketmanager:  
+
+* `wget -qO - 'https://bintray.com/user/downloadSubjectPublicKey?username=openhab' | sudo apt-key add -`
+* `sudo apt-get install apt-transport-https`
+* `echo 'deb https://dl.bintray.com/openhab/apt-repo2 stable main' | sudo tee /etc/apt/sources.list.d/openhab2.list`
 

@@ -18,7 +18,7 @@ Es wird davon ausgegangen, dass ein lauffähiger Raspberry vorliegt. Wie Raspbia
 Vorgehensweise:  
 1. Raspbery starten und anmelden bzw. Verbindung per SSH herstellen.  
 2. Die Installation des YAHM Grundsystem incl. CCU2 Container.  
-   `sudo wget -nv -O- https://raw.githubusercontent.com/leonsio/YAHM/develop/yahm-init | sudo -E bash -s quickinstall -`  
+   `sudo wget -nv -O- https://raw.githubusercontent.com/leonsio/YAHM/master/yahm-init | sudo -E bash -s quickinstall -`  
 3. reboot durchgeführt und erneut anmelden  
    `sudo reboot`  
 
