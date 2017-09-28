@@ -1,5 +1,5 @@
-OpenHAB auf dem dem Raspberry PI
-================================
+OpenHAB2 auf dem dem Raspberry PI
+=================================
 
 Die folgenden Kapitel werden die Installation und Verwendung von [Raspbian](www.raspbian.org "Raspbian.org Homepage")
 auf dem [Raspberry PI](http://www.raspberrypi.org/ "Raspberry PI Homepage") sowie die Nutzung von openHAB auf diesem System
@@ -187,15 +187,53 @@ Quelle: http://docs.openhab.org/installation/linux.html
 
 
 
-openHAB auf dem Raspberry installieren
+openHAB2 auf dem Raspberry installieren
 --------------------------------------
 
 Da es sich bei Raspbian um eine Debian basierte Distribution handelt, empfiehlt es sich openHAB2 über die Paketquellen zu installieren.
-Hierzu müssen dem Linux Paketmanager zuerst die Quellen hinzugefügt werden, damit die die openHAB2 Pakete installiert werden können. Ein weitere Vorteil der installation von openHAB über den Paketmanager ist, dass bei updates openHAB mit aktualisiert wird.  
+Hierzu müssen dem Linux Paketmanager zuerst die Quellen hinzugefügt werden, damit die die openHAB2 Pakete installiert werden können. Ein weitere Vorteil der Installation von openHAB über den Paketmanager ist, dass bei Updates openHAB mit aktualisiert wird.  
 
 Hinzufügen der Quellen zum Paketmanager:  
 
-* `wget -qO - 'https://bintray.com/user/downloadSubjectPublicKey?username=openhab' | sudo apt-key add -`
-* `sudo apt-get install apt-transport-https`
-* `echo 'deb https://dl.bintray.com/openhab/apt-repo2 stable main' | sudo tee /etc/apt/sources.list.d/openhab2.list`
+1. Schlüssel für das openHAB Paket vom Schlüssel-Server herunterladen damit die Installation verifiziert werden kann  
+  `wget -qO - 'https://bintray.com/user/downloadSubjectPublicKey?username=openhab' | sudo apt-key add -`
+
+2. Installation benötigter Abhängigkeiten  
+   `sudo apt-get install apt-transport-https`
+
+3. Hinzufügen der Paketquellen damit openHAB installiert werden kann  
+   `echo 'deb https://dl.bintray.com/openhab/apt-repo2 stable main' | sudo tee /etc/apt/sources.list.d/openhab2.list`
+
+4. Paket-Liste aktualisieren damit das Installationsprogramm openHAB findet.  
+   `sudo apt-get update`
+
+5. openHAB2 installieren.  
+   `sudo apt-get install openhab2`
+
+6. Der folgende Schritt muss nur durchgeführt werden, wenn openHAB offline betrieben wird und openHAB die benötigten Bindings nicht nach Bedarf aus dem Internet nachinstallieren kann.  
+   `sudo apt-get install openhab2-addons`  
+   ![Ausgabe der openHAB2 Installation](images/Ausgabe_openHAB2_Installation.png "Ausgabe der openHAB2 Installation")
+
+Nach erfolgreicher Installation kann openHAB2 nun mit folgendem Befehl gestartet werden.  
+
+*  `sudo /bin/systemctl start openhab2.service`  
+
+Ergänzend noch der Befehl um openHAB2 zu stoppen bzw. den Status abzufragen:  
+
+*  `sudo systemctl stop openhab2.service`  
+*  `sudo systemctl status openhab2.service`
+
+![Ausgabe von systemctl openhab2.service](images/Ausgabe_openHAB2_Status.png "Ausgabe von systemctl openhab2.service")
+
+
+Autostart von openHAB2 einrichten
+--------------------------------
+
+Damit openHAB nach einen Neustart des Betriebssystem automatisch gestartet wird, müssen noch zwei Befehle ausgeführt werden um das System zu konfigurieren. Dies funktioniert nur, wenn openHAB2 wie zuvor beschrieben installiert wurde.
+
+Autostart konfigurieren:  
+1. `sudo systemctl daemon-reload`  
+2. `sudo systemctl enable openhab2.service`
+
+![Ausgabe beim einrichten des openHAB2 Autostart](images/Ausgabe_openHAB2_Autostart.png "Ausgabe beim einrichten des openHAB2 Autostart")
 
