@@ -10,7 +10,7 @@ pages:
 - Milight-Binding: 'Binding_milight.md'
 - Persistence: 'Persistence.md'
 - Installation auf einem Raspberry PI: 'Raspberry.md'
-- Autostart von openHAB auf dem Raspberry PI: 'Autostart.md'
+# - Autostart von openHAB auf dem Raspberry PI: 'Autostart.md'
 - Setpoint Beispiel: 'setpoint.md'
 - Anbindung Kostal Wechselrichter: 'Kostal_inverter_HTTP.md'
 - Anbindung B-Control Manager: 'B-Control_EM_example.md'

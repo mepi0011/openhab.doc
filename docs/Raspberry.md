@@ -1,16 +1,8 @@
-OpenHAB2 auf dem dem Raspberry PI
-=================================
+Linux und OpenHAB2 auf dem Raspberry PI einrichten
+==================================================
 
-Die folgenden Kapitel werden die Installation und Verwendung von [Raspbian](www.raspbian.org "Raspbian.org Homepage")
-auf dem [Raspberry PI](http://www.raspberrypi.org/ "Raspberry PI Homepage") sowie die Nutzung von openHAB auf diesem System
-erklären. Prinzipiell können für die Nutzung von openHAB auf dem
-Raspberry PI auch andere Betriebssysteme verwendet werden. Im Folgenden
-beschränke ich mich auf Raspbian. Hierbei handelt es sich wie bei den
-meisten Linux Systemen um ein offenes Betriebssystem. Raspbian wurde
-speziell für den Raspberry optimiert und basiert auf Debian. Dies
-ermöglicht die Nutzung vieler Pakete (Programme) die für Debian
-bereitgestellt werden. Der Name Raspbian setzt sich aus Raspberry und
-Debian zusammen.
+In diesem Kapitel wird die Installation von [Raspbian](www.raspbian.org "Raspbian.org Homepage") und openHAB auf einem [Raspberry PI](http://www.raspberrypi.org/ "Raspberry PI Homepage") beschrieben.
+Prinzipiell kann für die Nutzung von openHAB auf dem Raspberry PI auch andere Betriebssysteme verwendet werden. Im Folgenden beschränke ich mich auf die Linux Distribution _Raspbian_, das auf Debian Linux basiert und speziell für den Raspberry optimiert wurde. Der Name Raspbian setzt sich aus Raspberry und Debian zusammen. Die Nutzung eines Debian Derivat ermöglicht die Nutzung vieler Pakete (Programme) die für Debian bereitgestellt werden und mit [ubuntuusers.de](https://ubuntuusers.de/ "ubuntuusers.dee") steht eine großartige deutschsprachige Wiki bereit.
 
 Raspbian installieren
 ---------------------
@@ -72,29 +64,27 @@ Diese muss nur durchgeführt werden, wenn eine leere SD Karte vorliegt auf die d
   USER: pi, Passwort:raspberry  
   Achtung: Zu beginn ist die Tastatur nicht auf deutsch eingestellt, wodurch y und z vertauscht sind!
 
-Installation des Midnight Commander (mc)
+Midnight Commander installieren (optional)
 ----------------------------------------
 
-Nach erfolgreicher Installation von Linux sollte das sehr hilfreiche
-Programm ´mc´ nicht fehlen. Damit der Midnight Commander installiert wird,
-nach dem Hochfahren und Anmelden folgenden Befehl ausführen:  
+Für die komfortablere Navigation im Dateisystem sowie die Bearbeitung von Dateien ist es empfehlenswert das sehr hilfreiche
+Programm ´mc´ zu installieren. Für die Installation von Midnight Commander, folgenden Befehl ausführen:  
 ´sudo apt-get install mc´  
 Danach wird man aufgefordert, das root-Passwort
-einzugeben, dies ist das gleiche wie für den user pi. Nach Installation
-kann das Programm mc wie folgt aufgerufen werden: ´mc´ (ohne root Rechte)
-oder ´sudo mc´ (mit root Rechte)  
+einzugeben, dies ist das gleiche wie für den user pi. Nach erfolgter Installation
+kann das Programm mit dem dem Befehl ´mc´ (ohne root Rechte) oder ´sudo mc´ (mit root Rechte) ausgeführt werden.  
 ![Midnight Commander](images/mc_home.png "Midnight Commander")
 
-Statische IP-Adressen einrichten
---------------------------------
+Statische IP-Adressen einrichten (optional)
+-------------------------------------------
 
-Standardmäßig läufen die Netzwerkkarten mit DHCP. Ist es erforderlich einer der
+Standardmäßig läuft die Netzwerkkarten mit DHCP. Möchte man Um der Netzwerkkarte eine feste IP-Adresse Abhängig der verwendeten Linux Version, Ist es erforderlich einer der
 Netzwerkkarten eine feste IP-Adresse zuweisen, muss unter
-Linux entweder die Datei /etc/network/interfaces oder /etc/dhcpcd.conf angepasst werden.
+Linux entweder die Datei _/etc/network/interfaces_ oder _/etc/dhcpcd.conf_ angepasst werden.
 Der folgende Abschnitt beschreibt die beiden Möglichkeiten.  
 
 **Anpassen der Datei "/etc/networks/interfaces"**  
-*(Ältere Linux Distributionen z. B. Raspbian Wheezy oder Debia Wheety)*  
+*(Ältere Linux Distributionen z. B. Raspbian Wheezy oder Debian Wheezy)*  
 
 Die Datei selbst kann nur von root angepasst werden.  
 Um die Datei anzupassen, wie folgt vorgehen:
@@ -152,12 +142,12 @@ Zum einstellen der statischen IPv4 wie folgt vorgehen:
 Quelle: https://www.elektronik-kompendium.de/sites/raspberry-pi/1912151.html
 
 
-Java Installieren
------------------
+Oracle Java Installieren
+------------------------
 
 Bei den meisten Linux Distributionen ist Java bereits vorinstalliert, allerdings handelt es sich dabei nicht um das von openHAB empfohlene Oracle Java Oracle Java 8 Rev > 101. Vor der Installation von openHAB wird empfohlene die installierte Java Version zu kontrollieren und ggf. zu deinstallieren.  
 
-Bei Verwendung von Raspbian Lite ist noch kein Java installiert, was die Installation vereinfacht da nichts deinstalliert werden muss.  
+Bei Verwendung von Raspbian Lite ist noch kein Java installiert. Dies vereinfacht die Installation von Oracle Java, da Java nicht zuerst deinstalliert werden muss.  
 
 Um Java auf dem Raspberry zu installieren, folgende Befehle ausführen:
 
@@ -186,9 +176,8 @@ Um Java auf dem Raspberry zu installieren, folgende Befehle ausführen:
 Quelle: http://docs.openhab.org/installation/linux.html
 
 
-
 openHAB2 auf dem Raspberry installieren
---------------------------------------
+---------------------------------------
 
 Da es sich bei Raspbian um eine Debian basierte Distribution handelt, empfiehlt es sich openHAB2 über die Paketquellen zu installieren.
 Hierzu müssen dem Linux Paketmanager zuerst die Quellen hinzugefügt werden, damit die die openHAB2 Pakete installiert werden können. Ein weitere Vorteil der Installation von openHAB über den Paketmanager ist, dass bei Updates openHAB mit aktualisiert wird.  
