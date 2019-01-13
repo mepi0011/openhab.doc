@@ -1,4 +1,12 @@
 site_name: openHAB Dokumentation
+
+theme:
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - rust
+
 nav:
 - Home: 'index.md'
 - 'OpenHAB 2.x Installation auf einem PC': 'openHAB2_Installation.md'
@@ -16,4 +24,4 @@ nav:
 - Anbindung B-Control Manager: 'B-Control_EM_example.md'
 - Anbindung Viessmann Heizung: 'Viessmann.md'
 - Lizenzierung: 'license.md'
-theme: readthedocs
+
