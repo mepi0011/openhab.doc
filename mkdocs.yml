@@ -16,3 +16,4 @@ nav:
 - Anbindung B-Control Manager: 'B-Control_EM_example.md'
 - Anbindung Viessmann Heizung: 'Viessmann.md'
 - Lizenzierung: 'license.md'
+theme: readthedocs
