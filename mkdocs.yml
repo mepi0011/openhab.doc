@@ -1,5 +1,5 @@
 site_name: openHAB Dokumentation
-pages:
+nav:
 - Home: 'index.md'
 - 'OpenHAB 2.x Installation auf einem PC': 'openHAB2_Installation.md'
 - 'OpenHAB 1.x Installation auf einem PC': 'Installation.md'
