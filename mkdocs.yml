@@ -1,28 +1,27 @@
 site_name: openHAB Dokumentation
+site_description: Erste Schritte mit openHAB und Installation auf dem Raspberry PI
 
-theme:
-    name: readthedocs
-    highlightjs: true
-    hljs_languages:
-        - yaml
-        - rust
+repo_url: https://github.com/mepi0011/openhab.doc
+repo_name: openhab.doc
 
-nav:
+theme: readthedocs
+
+pages:
     - Home: 'index.md'
     - 'OpenHAB 2.x Installation auf einem PC': 'openHAB2_Installation.md'
     # - 'OpenHAB 1.x Installation auf einem PC': 'Installation.md'
     - Erste Schritte: 'Beispiel.md'
-    - Bindings:
-        - Anbindung an den KNX-Bus: 'KNX.md'
-        - HTTP-Binding: 'Binding_HTTP.md'
-        - HomeMatic-Binding: 'HomeMatic_YAHM.md'
-        - Milight-Binding: 'Binding_milight.md'
+    # - Bindings:
+    - Anbindung an den KNX-Bus: 'KNX.md'
+    - HTTP-Binding: 'Binding_HTTP.md'
+    - HomeMatic-Binding: 'HomeMatic_YAHM.md'
+    - Milight-Binding: 'Binding_milight.md'
     - Persistence: 'Persistence.md'
     - Installation auf einem Raspberry PI: 'Raspberry.md'
-    - Beispiele:
-        - Setpoint Beispiel: 'setpoint.md'
-        - Anbindung Kostal Wechselrichter: 'Kostal_inverter_HTTP.md'
-        - Anbindung B-Control Manager: 'B-Control_EM_example.md'
-        - Anbindung Viessmann Heizung: 'Viessmann.md'
+    # - Beispiele:
+    - Setpoint Beispiel: 'setpoint.md'
+    - Anbindung Kostal Wechselrichter: 'Kostal_inverter_HTTP.md'
+    - Anbindung B-Control Manager: 'B-Control_EM_example.md'
+    - Anbindung Viessmann Heizung: 'Viessmann.md'
     - Lizenzierung: 'license.md'
 
