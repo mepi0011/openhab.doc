@@ -141,39 +141,59 @@ Zum einstellen der statischen IPv4 wie folgt vorgehen:
 
 Quelle: https://www.elektronik-kompendium.de/sites/raspberry-pi/1912151.html
 
+Java installieren
+------------------
 
-Oracle Java Installieren
-------------------------
+Bei den meisten Linux Distributionen ist Java bereits vorinstalliert, allerdings handelt es sich dabei nicht um das von openHAB empfohlene Zulu Java in Version 8. Vor der Installation von openHAB wird empfohlene die installierte Java Version zu prüfen und bei Bedarf zu deinstallieren.  
+Bei Verwendung von Raspbian Lite ist noch kein Java installiert. Dies vereinfacht die Installation von Zulu, da kein vorhandenes Java deinstalliert werden muss.  
 
-Bei den meisten Linux Distributionen ist Java bereits vorinstalliert, allerdings handelt es sich dabei nicht um das von openHAB empfohlene Oracle Java Oracle Java 8 Rev > 101. Vor der Installation von openHAB wird empfohlene die installierte Java Version zu kontrollieren und ggf. zu deinstallieren.  
+**Zulu Java installieren**  
 
-Bei Verwendung von Raspbian Lite ist noch kein Java installiert. Dies vereinfacht die Installation von Oracle Java, da Java nicht zuerst deinstalliert werden muss.  
+Die folgende Anleitung basiert auf einem Beitrag der [openHAB Communtiy](https://community.openhab.org/t/howto-install-zulu-embedded-java-on-raspberry-pi-3/22589/47), da die original [Zulu Beschreibung](https://docs.azul.com/zulu/zuludocs/#ZuluUserGuide/InstallingZulu/InstallationLinuxusingRPMOrDEBPackaging.htm%3FTocPath%3DZulu%2520Installation%2520Guide%7CInstalling%2520Zulu%7C_____5) nicht funktionierte.
+# https://docs.azul.com/zulu/zuludocs/#ZuluUserGuide/PrepareZuluPlatform/AttachAPTRepositoryUbuntuOrDebianSys.htm#.  
 
-Um Java auf dem Raspberry zu installieren, folgende Befehle ausführen:
+1. Verzeichnis erstellen  
+   `sudo mkdir /opt/jdk/`
+   
+2. Verzeichnis wechseln
+   `cd /opt/jdk`
+   
+3. Paket herunterladen
+   `wget http://cdn.azul.com/zulu-embedded/bin/zulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf.tar.gz`
 
-1. Hinzufügen der Paketquellen damit Java installiert werden kann   
-  `echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | sudo tee /etc/apt/sources.list.d/webupd8team-java.list`
-  `echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | sudo tee -a /etc/apt/sources.list.d/webupd8team-java.list`
+4. Heruntergeladene Datei entpacken
+   `sudo tar -xzvf zulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf.tar.gz`
+   
+5. Zulu Java einrichten  
+   `sudo update-alternatives --install /usr/bin/java java /opt/jdk/zulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf/bin/java 212`  
+   `sudo update-alternatives --install /usr/bin/javac javac /opt/jdk/zulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf/bin/javac 212`  
 
-2. Den Schlüssel vom Schlüssel-Server herunterladen damit der Paket-Manager die Pakete verifizieren kann  
-  `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886`
+6. Java Version prüfen  
+   `java -version'  
+   Ausgabe:
+   ```
+   openjdk version "1.8.0_212"
+   OpenJDK Runtime Environment (Zulu8.38.0.163-CA-linux_aarch32hf) (build 1.8.0_212-b163)
+   OpenJDK Client VM (Zulu8.38.0.163-CA-linux_aarch32hf) (build 25.212-b163, mixed mode, Evaluation)
+   ```
+7. Bereinigen / tar.gz Datei löschen  
+   'sudo rm ulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf.tar.gz`
+   
+   
+3. Paket installieren
+   `sudo dpkg -i zulu8.38.0.13-ca-jdk8.0.212-linux_amd64.deb`
 
-3. Update der Paket-Liste durchführen  
-  `sudo apt-get update`
+# 1.  Öffentliche Paketschlüssel von Zulu hinzufügen  
+#  `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9`
 
-4. Java installieren  
-  `sudo apt-get install oracle-java8-installer`  
+# 2. APT Repository hinzufügen  
+#   Nano mit folgendem Befehl öffen `sudo echo /etc/apt/sources.list.d/zulu.list` und die Zeile `deb http://repos.azulsystems.com/debian stable main` einfügen, speichern und Nano beenden.  
 
-5. System neu starten damit die Änderungen wirksam werden  
-  `sudo reboot`
+# 3. Updates beziehen  
+#   `sudo apt-get update`
 
-7. Java Version überprüfen  
-  `java -version`  
-  Die Ausgabe sollte nun in etwa wie folgt aussehen:
-  ![Ausgabe von java -version](images/Ausgabe_Java_Version.png "Ausgabe von java -version")
-
-    
-Quelle: http://docs.openhab.org/installation/linux.html
+# 4. Zulu 8 installieren
+#   `sudo apt-get install zulu-8`
 
 
 openHAB2 auf dem Raspberry installieren
