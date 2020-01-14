@@ -150,7 +150,8 @@ Bei Verwendung von Raspbian Lite ist noch kein Java installiert. Dies vereinfach
 **Zulu Java installieren**  
 
 Die folgende Anleitung basiert auf einem Beitrag der [openHAB Communtiy](https://community.openhab.org/t/howto-install-zulu-embedded-java-on-raspberry-pi-3/22589/47), da die original [Zulu Beschreibung](https://docs.azul.com/zulu/zuludocs/#ZuluUserGuide/InstallingZulu/InstallationLinuxusingRPMOrDEBPackaging.htm%3FTocPath%3DZulu%2520Installation%2520Guide%7CInstalling%2520Zulu%7C_____5) nicht funktionierte.
-# https://docs.azul.com/zulu/zuludocs/#ZuluUserGuide/PrepareZuluPlatform/AttachAPTRepositoryUbuntuOrDebianSys.htm#.  
+
+Vorgehensweise zur Installation von Zulu Java:
 
 1. Verzeichnis erstellen  
    `sudo mkdir /opt/jdk/`
@@ -159,16 +160,16 @@ Die folgende Anleitung basiert auf einem Beitrag der [openHAB Communtiy](https:/
    `cd /opt/jdk`
    
 3. Paket herunterladen
-   `wget http://cdn.azul.com/zulu-embedded/bin/zulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf.tar.gz`
+   `sudo wget https://cdn.azul.com/zulu-embedded/bin/zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf.tar.gz`
 
 4. Heruntergeladene Datei entpacken
-   `sudo tar -xzvf zulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf.tar.gz`
+   `sudo tar -xzvf zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf.tar.gz`
    
 5. Zulu Java einrichten  
-   `sudo update-alternatives --install /usr/bin/java java /opt/jdk/zulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf/bin/java 212`  
-   `sudo update-alternatives --install /usr/bin/javac javac /opt/jdk/zulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf/bin/javac 212`  
+   `sudo update-alternatives --install /usr/bin/java java /opt/jdk/zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf/bin/java 212`  
+   `sudo update-alternatives --install /usr/bin/javac javac /opt/jdk/zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf/bin/javac 212`  
 
-6. Java Version prüfen  
+6. Java Version prüfen:  
    `java -version'  
    Ausgabe:
    ```
@@ -178,23 +179,6 @@ Die folgende Anleitung basiert auf einem Beitrag der [openHAB Communtiy](https:/
    ```
 7. Bereinigen / tar.gz Datei löschen  
    'sudo rm ulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf.tar.gz`
-   
-   
-3. Paket installieren
-   `sudo dpkg -i zulu8.38.0.13-ca-jdk8.0.212-linux_amd64.deb`
-
-# 1.  Öffentliche Paketschlüssel von Zulu hinzufügen  
-#  `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9`
-
-# 2. APT Repository hinzufügen  
-#   Nano mit folgendem Befehl öffen `sudo echo /etc/apt/sources.list.d/zulu.list` und die Zeile `deb http://repos.azulsystems.com/debian stable main` einfügen, speichern und Nano beenden.  
-
-# 3. Updates beziehen  
-#   `sudo apt-get update`
-
-# 4. Zulu 8 installieren
-#   `sudo apt-get install zulu-8`
-
 
 openHAB2 auf dem Raspberry installieren
 ---------------------------------------
