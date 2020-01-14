@@ -154,31 +154,31 @@ Die folgende Anleitung basiert auf einem Beitrag der [openHAB Communtiy](https:/
 Vorgehensweise zur Installation von Zulu Java:
 
 1. Verzeichnis erstellen  
-   `sudo mkdir /opt/jdk/`
-   
+  `sudo mkdir /opt/jdk/`
+
 2. Verzeichnis wechseln
-   `cd /opt/jdk`
-   
+  `cd /opt/jdk`
+
 3. Paket herunterladen
-   `sudo wget https://cdn.azul.com/zulu-embedded/bin/zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf.tar.gz`
+  `sudo wget https://cdn.azul.com/zulu-embedded/bin/zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf.tar.gz`
 
 4. Heruntergeladene Datei entpacken
-   `sudo tar -xzvf zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf.tar.gz`
-   
+  `sudo tar -xzvf zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf.tar.gz`
+
 5. Zulu Java einrichten  
-   `sudo update-alternatives --install /usr/bin/java java /opt/jdk/zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf/bin/java 212`  
-   `sudo update-alternatives --install /usr/bin/javac javac /opt/jdk/zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf/bin/javac 212`  
+  `sudo update-alternatives --install /usr/bin/java java /opt/jdk/zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf/bin/java 212`  
+  `sudo update-alternatives --install /usr/bin/javac javac /opt/jdk/zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf/bin/javac 212`  
 
 6. Java Version prüfen:  
-   `java -version'  
-   Ausgabe:
-   ```
-   openjdk version "1.8.0_212"
-   OpenJDK Runtime Environment (Zulu8.38.0.163-CA-linux_aarch32hf) (build 1.8.0_212-b163)
-   OpenJDK Client VM (Zulu8.38.0.163-CA-linux_aarch32hf) (build 25.212-b163, mixed mode, Evaluation)
-   ```
+  `java -version'  
+  Ausgabe:__
+  ```
+  openjdk version "1.8.0_212"
+  OpenJDK Runtime Environment (Zulu8.38.0.163-CA-linux_aarch32hf) (build 1.8.0_212-b163)
+  OpenJDK Client VM (Zulu8.38.0.163-CA-linux_aarch32hf) (build 25.212-b163, mixed mode, Evaluation)
+  ```
 7. Bereinigen / tar.gz Datei löschen  
-   'sudo rm ulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf.tar.gz`
+  `sudo rm ulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf.tar.gz`
 
 openHAB2 auf dem Raspberry installieren
 ---------------------------------------
