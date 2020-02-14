@@ -1,103 +1,136 @@
-Anbindung von KNX an openHAB
-============================
+KNX-Binding
+===========
 
-Im folgenden Kapitel wird erklärt wie openHAB an den KNX-Bus angebunden werden kann. Dabei wird das [Beispielhaus](#Beispiel--Visualisierung-Haus) herangezogen. Zusätzlich wird für die Kommunikation über TCP/IP zum KNX-Bus ein KNX/IP Gateway benötigt (z.B.: Siemens IP-Schnittstelle N148/22).
+Im folgenden Kapitel wird die Anbindung an den KNX-Bus per KNX/IP Gateway erklärt.
+Für die Konfiguration wird das [Beispielhaus](#Beispiel--Visualisierung-Haus) herangezogen sowie die Einrichtung des KNX-Binding per textbasierte Konfiguration erklärt.
+Um auf den KNX-Bus zuzugreifen, wird ein an den KNX-Bus angeschlossenes KNX-Gateway benötigt (z. B.: Siemens IP-Schnittstelle N148/22).
+Das KNX Verbindung kann dabei sowohl mit einem Ethernet (Router- oder Tunneltyp) als auch als serielles Gateway realisiert werden.
+Auf die Konfiguration als serielles Gateway wird nicht eingegangen.
 
 Vorbereitungen
 --------------
 
 Nach erfolgter Installation des KNX/IP Gateways, muss dessen IP-Adresse
-bekannt sein. Hier empfiehlt es sich eine feste IP-Adresse zu vergeben.
-Zusätzlich muss die IP-Adresse des System auf dem openHAB läuft bekannt
-sein. Dies kann der Konsole unter Windows mit ipconfig bzw. unter Linux
+bekannt sein. Hier empfiehlt es sich dem KNX/IP Gateway eine feste IP-Adresse zu vergeben.
+Zusätzlich muss die IP-Adresse des Systems auf dem openHAB läuft bekannt
+sein. Diese kann unter Windows mit ipconfig bzw. unter Linux
 mit ifconfig ermittelt werden. Nachdem die IP-Adressen bekannt sind,
-kann mit dem Einrichten von openHAB begonnen werden.
+kann mit der Installation und dem Einrichten des KNX-Binding begonnen werden.  
 
-Als erstes kopieren wir das Binding org.openhab.binding.knx-\*.jar in
-das Verzeichnis <Pfad_zu_openHAB>/runtime/addons. Das Herunterladen
-der Bindings ist in Kapitel [Bindings/Addons herunterladen](#BINDING-Addons-herunterladen) beschrieben.  
+Die Bindings werden am einfachstens über da *Paper UI* installiert.
+Zu Installation des KNX-Binding wird das *Paper UI* geöffnet und links in der Liste Add-ons ausgewählt.
+Danach kann in der Rubrik *Bindings* das KNX-Binding ausgewählt und installiert werden.
 
-Nun müssen noch folgende Zeilen in der Konfigurationsdatei openhab.cfg
-angepasst werden.
+Im Kopf der Datei *knx.things* sind zur Konfiguration des KNX/IP Gateway folgende Zeilen anzupassen oder einzufügen:
 
--   knx:ip=\<IP Adresse des KNX Gateway\>
+  * **type** = <TUNNEL oder ROUTER \>  
+    (Parameter ist erforderlich! / Der ROUTER Modus läuft nicht auf allen Geräten)
 
--   knx:type=TUNNEL (ROUTER Modus läuft nicht auf allen Geräten)
+  * **ipAddress** = <IP Adresse des KNX Gateway \>
 
--   knx.localIp=\<IP Adresse des PC auf dem die openhab-runtime läuft\>
+  * **localIp** = <IP Adresse des PC auf dem die openhab-runtime läuft \>
 
-Bei dem Auszug der folgenden Beispiel openhab.cfg, läuft openHAB auf
+Bei dem Auszug der folgenden Beispiel knx.things, läuft openHAB auf
 einem PC mit der IP-Adresse 192.168.1.50, das KNX/IP Gateway mit der
 IP-Adresse 192.168.1.100. Die Kommunikation wird im Tunnel-Modus
 aufgebaut.
 
-    ######################### KNX Binding #################################
-    #
-    # KNX gateway IP address
-    # (optional, if serialPort or connection type 'ROUTER' is specified)
-    knx:ip=192.168.1.100
+    Bridge knx:ip:bridge [  
+        type="TUNNEL", 
+        ipAddress="192.168.1.100", 
+        portNumber=3671, 
+        localIp="192.168.1.50",
+        readingPause=50, 
+        responseTimeout=10, 
+        readRetriesLimit=3, 
+        autoReconnectPeriod=60,
+        localSourceAddr="0.0.0"
+    ]
+	
+Zusätzlich zur Gateway Konfiguration ist noch das *device Thing* zu definieren. Dies geschieht im Abschnitt *Thing* der Datei *knx.things*.
+Bei den *Things* handelt es sich um einen Container für beliebige Gruppenadressen des KNX-Buses.
+Die einzige Aufgabe des *Thing* ist es, die definierten Gruppenadressen auf dem KNX-Bus abzufragen um sicherzustellen, dass KNX-Aktor erreichbar ist.
 
-    # KNX IP connection type. Could be either TUNNEL or ROUTER
-    # (optional, defaults to TUNNEL)
-    # Note: If you cannot get the ROUTER mode working
-    # (even if it claims it is connected),
-    # use TUNNEL mode instead with setting both the ip of the KNX gateway
-    # and the localIp.
-    knx:type=TUNNEL
+Im Abschnitt Thing können die optionalen Parameter *address*, *fetch*, *pingInterval* und *readInterval* definiert werden.  
 
-    # KNX gateway port (optional, defaults to 3671)
-    #knx:port=
+  * **address** = < individuelle Geräteadresse \> in 0.0.0-Notation
 
-    # Local endpoint to specify the multicast interface, no port is used
-    # (optional)
-    knx:localIp=192.168.1.50
+  * **fetch** = < Geräteparameter und Adress- und Kommunikationsobjekttabellen auslesen \>  
+    (erfordert den Parameter *address* / Standardwert ist "false")
 
-    # Serial port of FT1.2 KNX interface (ignored, if ip is specified)
-    # Valid values are e.g.
-    # COM1 for Windows and /dev/ttyS0 or /dev/ttyUSB0 for Linux
-    #knx:serialPort=
+  * **pingInterval** = < Intervall in Sekunden zur Geräteabfrage und setzen des *Thing*-Status abhängig vom Ergebnis der Rückmeldung \>   (erfordert den Parameter address / Standardwert ist 600)
 
-    # Pause in milliseconds between two read requests on the KNX bus during
-    # initialization (optional, defaults to 50)
-    #knx:pause=
+  * **pingInterval** = < Intervall in Sekunden zur aktiven Leseaufforderung von Werten auf dem Bus \>  
+    (0, wenn sie nur einmal beim Start gelesen werden sollen / erfordert den Parameter address / Standardwert ist 0)
 
-    # Timeout in milliseconds to wait for a response from the KNX bus
-    # (optional, defaults to 10000)
-    #knx:timeout
-
-    # Number of read retries while initialization items from the KNX bus
-    # (optional, defaults to 3)
-    #knx:readRetries
-
-    # Seconds between connect retries when KNX link has been lost
-    # 0 means never retry, it will only reconnect on next write
-    # or read request
-    # Note: without periodic retries all events will be lost up
-    #       to the next read/write request
-    # (optional, default is 0)
-    #knx:autoReconnectPeriod=30
-
+Der Abschnitt *device Thing* sieht beispielsweise wie folgt aus.
+ 
+    Thing device generic [
+        address="1.2.3",
+        fetch=true,
+        pingInterval=300,
+        readInterval=0
+    ]
+	
+Abschließend werden die KNX Gruppenadressen noch entsprechenden Kanälen zugeordnet.
+Anhand eines Lichts und Dimmer aus dem [Beispielhaus](#Beispiel--Visualisierung-Haus) wird die Zuordnung der Gruppenadressen veranschaulicht.
+Weitere mögliche Kanäle und eine detailiertere Beschreibung ist der englischen Beschreibung des KNX-Binding zu entnehmen (https://www.openhab.org/addons/bindings/knx/).  
 
 * * * * *
 ![Hinweis!](images/Warning.png "Hinweis! Konfiguration Bindings in der openhab.cfg")
-Wichtig ist, dass die Zeilen durch entfernen des voranstehenden Zeichen
-\# aktiviert werden!
-
+Nach Änderungen der DPT von bereits bestehenden Kanälen muss openHAB neu  
+gestartet werden, damit die Änderungen wirksam werden.  
 * * * * *
 
-Alle Voraussetzungen für einen erfolgreichen Verbindungsaufbau zwischen dem KNX-Bus und openHAB sind nun gegeben. Die Items können nun den Gruppenadressen (GA) zugeordnet werden.
+
+
 
 ### Licht schalten
 
-Nach erfolgter Konfiguration des KNX-Binding, können nun die Items den
-Gruppenadressen zugeordnet werden. Das folgende Beispiel verdeutlicht
-dies an einem Licht. Hierfür wird das Beispiel-Haus aus Kapitel
-[sec:BeispielHaus] verwendet. Das Licht des Kinderzimmer 1 im
-Obergeschoss, soll mit dem zugehörigen Item verbunden und mit openHAB
-geschaltet werden können. Das Licht im Kinderzimmer hat die
-Gruppenadresse 2/2/1.\
+Hierfür wird das Beispiel-Haus aus Kapitel
+[sec:BeispielHaus] verwendet. Das Licht des Spiegelschrankes im Obergeschoss hat die Gruppenadresse 2/2/1 zum schalten und 2/2/2 für den Status. Für Schalter wird der Kanal "switch" verwendet. 
 
-Die Item-Datei aus den Beispiel wird wie folgt abgeändert:
+Die Definition sieht dann wie folgt aus:
+    
+	Type switch : Licht_OG_Badspiegel	          "Licht Badspiegel"        [ ga="1.001:2/2/1" ]
 
-    /*Licht*/
-    Switch Licht_OG_Kinderzimmer1	"Licht Kinderzimmer1"	(OG_Kinderzimmer1)	{knx="2/2/1"}
+### Licht dimmen
+
+Hierfür wird das Beispiel-Haus aus Kapitel
+[sec:BeispielHaus] verwendet. Das Bad-Licht im Obergeschoss kann gedimmt werden und verwendet hierfüt folgende Gruppenadressen 2/1/40 (schalten), 2/1/41 (status bit), 2/1/44, 2/1/42 und 2/1/43.
+Zum Dimmen wird der Kanal "dimmer" verwendet. 
+
+Die Definition sieht dann wie folgt aus:
+    
+	Type dimmer      : Dimmer_OG_Bad		  "Licht Bad"	            [ switch="2/1/40+2/1/41", position="2/1/44+2/1/42", increaseDecrease="2/1/43" ]
+
+Die komplette *knx.things* Datei sieht dann wie folgt aus:
+
+    Bridge knx:ip:bridge [  
+        type="TUNNEL", 
+        ipAddress="192.168.1.100", 
+        portNumber=3671, 
+        localIp="192.168.1.50",
+        readingPause=50, 
+        responseTimeout=10, 
+        readRetriesLimit=3, 
+        autoReconnectPeriod=60,
+        localSourceAddr="0.0.0"
+    ] {
+	    Thing device generic [
+            address="1.2.3",
+            fetch=true,
+            pingInterval=300,
+            readInterval=0
+        ] {
+            Type switch      : Licht_OG_Bad	          "Licht Badspiegel"        [ ga="1.001:2/2/1" ]
+            Type dimmer      : Dimmer_OG_Bad		  "Licht Bad"	            [ switch="2/1/40+2/1/41", position="2/1/44+2/1/42", increaseDecrease="2/1/43" ]
+	    }
+	}
+
+Alle Voraussetzungen für einen erfolgreichen Verbindungsaufbau zwischen dem KNX-Bus und openHAB sind nun gegeben.  
+
+Nach erfolgter Konfiguration des KNX-Binding, müssen die Kanäle nun noch den Items zugeordnet werden. Am Beispiel der Item-Datei aus dem [Beispielhaus](#Beispiel--Visualisierung-Haus) ist diese wie folgt zu ändern:  
+
+        Switch Licht_OG_Bad_Spiegel   "Licht Spiegelschrank"	(OG_Bad) { channel="knx:device:bridge:generic:Licht_OG_Bad" }
+		Dimmer Licht_OG_Bad			  "Licht Bad"				(OG_Bad) { channel="knx:device:bridge:generic:Dimmer_OG_Bad" }
