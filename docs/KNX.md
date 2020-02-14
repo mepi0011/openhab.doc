@@ -74,7 +74,7 @@ Der Abschnitt *device Thing* sieht beispielsweise wie folgt aus.
 	
 Abschließend werden die KNX Gruppenadressen noch entsprechenden Kanälen zugeordnet.
 Anhand eines Lichts und Dimmer aus dem [Beispielhaus](#Beispiel--Visualisierung-Haus) wird die Zuordnung der Gruppenadressen veranschaulicht.
-Weitere mögliche Kanäle und eine detailiertere Beschreibung ist der englischen Beschreibung des KNX-Binding zu entnehmen (https://www.openhab.org/addons/bindings/knx/).  
+Weitere mögliche Kanäle und eine detailliertere Beschreibung ist der englischen Beschreibung des KNX-Binding zu entnehmen (https://www.openhab.org/addons/bindings/knx/).  
 
 * * * * *
 ![Hinweis!](images/Warning.png "Hinweis! Konfiguration Bindings in der openhab.cfg")
@@ -87,8 +87,8 @@ gestartet werden, damit die Änderungen wirksam werden.
 
 ### Licht schalten
 
-Hierfür wird das Beispiel-Haus aus Kapitel
-[sec:BeispielHaus] verwendet. Das Licht des Spiegelschrankes im Obergeschoss hat die Gruppenadresse 2/2/1 zum schalten und 2/2/2 für den Status. Für Schalter wird der Kanal "switch" verwendet. 
+Als Beispiel wird das Licht des Spiegelschrank aus dem Bad des [Beispielhaus](#Beispiel--Visualisierung-Haus)verwendet.
+Das Licht des Spiegelschrankes im Obergeschoss verwendet zum Schalten die Gruppenadresse 2/2/1 und 2/2/2 für den Status. Für Schalter wird der Kanal "switch" verwendet. 
 
 Die Definition sieht dann wie folgt aus:
     
@@ -96,8 +96,7 @@ Die Definition sieht dann wie folgt aus:
 
 ### Licht dimmen
 
-Hierfür wird das Beispiel-Haus aus Kapitel
-[sec:BeispielHaus] verwendet. Das Bad-Licht im Obergeschoss kann gedimmt werden und verwendet hierfüt folgende Gruppenadressen 2/1/40 (schalten), 2/1/41 (status bit), 2/1/44, 2/1/42 und 2/1/43.
+Als Beispiel wird das Licht im Bad aus dem aus dem OG des [Beispielhaus](#Beispiel--Visualisierung-Haus)verwendet. Das Licht im Bad lässt sich dimmen und verwendet hierfür folgende Gruppenadressen 2/1/40 (schalten), 2/1/41 (status bit), 2/1/44, 2/1/42 und 2/1/43.
 Zum Dimmen wird der Kanal "dimmer" verwendet. 
 
 Die Definition sieht dann wie folgt aus:
