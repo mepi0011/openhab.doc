@@ -178,7 +178,7 @@ Vorgehensweise zur Installation von Zulu Java:
   OpenJDK Client VM (Zulu8.38.0.163-CA-linux_aarch32hf) (build 25.212-b163, mixed mode, Evaluation)
   ```
 7. Bereinigen / tar.gz Datei löschen  
-  `sudo rm ulu8.38.0.163-ca-jdk1.8.0_212-linux_aarch32hf.tar.gz`
+  `sudo rm zulu8.42.0.195-ca-jdk1.8.0_232-linux_aarch32hf.tar.gz`
 
 openHAB2 auf dem Raspberry installieren
 ---------------------------------------
