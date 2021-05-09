@@ -189,13 +189,13 @@ Hierzu müssen dem Linux Paketmanager zuerst die Quellen hinzugefügt werden, da
 Hinzufügen der Quellen zum Paketmanager:  
 
 1. Schlüssel für das openHAB Paket vom Schlüssel-Server herunterladen damit die Installation verifiziert werden kann  
-  `wget -qO - 'https://bintray.com/user/downloadSubjectPublicKey?username=openhab' | sudo apt-key add -`
+  `wget -qO - 'https://openhab.jfrog.io/artifactory/api/gpg/key/public' | sudo apt-key add -`
 
 2. Installation benötigter Abhängigkeiten  
    `sudo apt-get install apt-transport-https`
 
 3. Hinzufügen der Paketquellen damit openHAB installiert werden kann  
-   `echo 'deb https://dl.bintray.com/openhab/apt-repo2 stable main' | sudo tee /etc/apt/sources.list.d/openhab2.list`
+   `echo 'deb https://openhab.jfrog.io/artifactory/openhab-linuxpkg stable main' | sudo tee /etc/apt/sources.list.d/openhab.list`
 
 4. Paket-Liste aktualisieren damit das Installationsprogramm openHAB findet.  
    `sudo apt-get update`
